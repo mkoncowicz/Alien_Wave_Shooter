@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bibw8h6hfvg0t"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_0juml"]
+[ext_resource type="Texture2D" uid="uid://crldca1d38b8b" path="res://player/af88a01042fe8b3.png" id="2_1kv3v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dqtn2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1kv3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1kv3v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_0juml")
+hp = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_dqtn2")
+animation = &"idle"
+frame_progress = 0.126052
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
