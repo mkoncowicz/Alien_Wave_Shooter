@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://celnbic03hgan"]
+
+[ext_resource type="Script" path="res://bullets/Pistol_bullet.gd" id="1_mbiyt"]
+[ext_resource type="Texture2D" uid="uid://v6y406vsjhkk" path="res://Assets/Pistol_bullet.png" id="2_wu51j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hdr4"]
+radius = 3.0
+height = 10.0
+
+[node name="PistolBullet" type="Area2D"]
+collision_layer = 9
+collision_mask = 5
+script = ExtResource("1_mbiyt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wu51j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_0hdr4")
+
+[node name="Hit_point" type="Node2D" parent="."]
+position = Vector2(8, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_PistolBullet_body_entered"]

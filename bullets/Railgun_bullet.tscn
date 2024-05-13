@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6qtyglqbkj7g"]
+
+[ext_resource type="Script" path="res://bullets/Railgun_bullet.gd" id="1_48ds1"]
+
+[node name="RailgunBullet" type="Node2D"]
+script = ExtResource("1_48ds1")
