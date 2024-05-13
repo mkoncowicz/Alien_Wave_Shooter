@@ -15,6 +15,13 @@ run/main_scene="res://map/Map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [input]
 
 ui_left={

@@ -16,8 +16,8 @@ const FRICTION: float = 0.15
 
 @onready var animated_sprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var coll_shape = $CollisionShape2D
-@onready var anim_player = $AnimationPlayer
-@onready var hurtbox = $HurtboxW
+
+
 
 var move_direction: Vector2 = Vector2.ZERO  # movement vector
 	  # speed vector
