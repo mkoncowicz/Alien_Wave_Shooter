@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bibw8h6hfvg0t"]
+[gd_scene load_steps=4 format=3 uid="uid://bibw8h6hfvg0t"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_0juml"]
 [ext_resource type="Texture2D" uid="uid://crldca1d38b8b" path="res://player/af88a01042fe8b3.png" id="2_1kv3v"]
@@ -17,9 +17,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nxa2o"]
-radius = 72.6911
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_0juml")
 hp = 2
@@ -31,4 +28,3 @@ animation = &"idle"
 frame_progress = 0.126052
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nxa2o")
