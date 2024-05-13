@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=10 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Texture2D" uid="uid://yih8kipnj0sj" path="res://Assets/floor00.png" id="2_0qmj0"]
+[ext_resource type="PackedScene" uid="uid://bjxjv7xwjye5g" path="res://obstackles/Column1.tscn" id="4_endne"]
+[ext_resource type="PackedScene" uid="uid://ko7roeo1l654" path="res://obstackles/Column2.tscn" id="5_6ijaq"]
 [ext_resource type="Texture2D" uid="uid://cpac8kq4ncxgi" path="res://Assets/walls.png" id="5_ksxiv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dj73s"]
@@ -4050,3 +4052,35 @@ layer_0/tile_data = PackedInt32Array(1310720, 1572865, 10, 1245184, 1179649, 12,
 
 [node name="Player" parent="." instance=ExtResource("1_7jr7l")]
 position = Vector2(265, 169)
+
+[node name="obstackles" type="Node2D" parent="."]
+
+[node name="Column1" parent="obstackles" instance=ExtResource("4_endne")]
+position = Vector2(358, 84)
+
+[node name="Column2" parent="obstackles" instance=ExtResource("5_6ijaq")]
+position = Vector2(146, 282)
+
+[node name="Column3" parent="obstackles" instance=ExtResource("4_endne")]
+position = Vector2(620, 338)
+
+[node name="Column4" parent="obstackles" instance=ExtResource("5_6ijaq")]
+position = Vector2(829, 141)
+
+[node name="Column5" parent="obstackles" instance=ExtResource("4_endne")]
+position = Vector2(155, 617)
+
+[node name="Column6" parent="obstackles" instance=ExtResource("5_6ijaq")]
+position = Vector2(595, 647)
+
+[node name="Column7" parent="obstackles" instance=ExtResource("4_endne")]
+position = Vector2(1162, 173)
+
+[node name="Column8" parent="obstackles" instance=ExtResource("5_6ijaq")]
+position = Vector2(1334, 404)
+
+[node name="Column9" parent="obstackles" instance=ExtResource("4_endne")]
+position = Vector2(932, 464)
+
+[node name="Column10" parent="obstackles" instance=ExtResource("5_6ijaq")]
+position = Vector2(1104, 704)
