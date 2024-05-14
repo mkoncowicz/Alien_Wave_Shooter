@@ -10,7 +10,6 @@ func _physics_process(delta):
 	global_position += bullet_speed * direction	
 
 func destroy():
-
 	queue_free()
 	
 func _on_PistolBullet_body_entered(body: Node):

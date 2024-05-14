@@ -7,8 +7,8 @@ signal died
 
 @export var hp_max: int = 100: set = set_hp_max
 @export var hp: int = hp_max: get = get_hp, set = set_hp
-@export var speed: int = 40                             # acceleration
-@export var max_speed: int = 100                        # speed
+@export var speed: int = 40
+@export var max_speed: int = 100                        
 @export var is_knockback: bool = true
 @export var knockback_modifier: float = 0.1
 
@@ -19,20 +19,20 @@ const FRICTION: float = 0.15
 
 
 
-var move_direction: Vector2 = Vector2.ZERO  # movement vector
-	  # speed vector
+var move_direction: Vector2 = Vector2.ZERO 
+
 
 func _physics_process(delta):
 	set_velocity(velocity)
 	move_and_slide()
 	velocity = velocity
-	velocity = lerp(velocity, Vector2.ZERO, FRICTION) # sample speed
+	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
 	move()
 	
 func move():
-	move_direction = move_direction.normalized()  # normalize vector
+	move_direction = move_direction.normalized()
 	velocity += move_direction * speed 
-	velocity = velocity.limit_length(max_speed)        # clamp speed	
+	velocity = velocity.limit_length(max_speed) 
 
 func take_damage(damage: int):
 	self.hp -= 30

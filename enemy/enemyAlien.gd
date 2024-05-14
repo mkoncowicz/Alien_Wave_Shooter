@@ -13,11 +13,7 @@ func _physics_process(delta):
 func update_target_location(target_location):
 	nav_agent.target_position = target_location
 
-func _on_navigation_agent_2d_target_reached():
-	#attack here
-	print("attack")
-
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("take_damage"):
+	if body.has_method("player_take_damage"):
 		body.take_damage(30)

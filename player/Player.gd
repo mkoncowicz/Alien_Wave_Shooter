@@ -15,7 +15,6 @@ func _process(delta: float):
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
 	if is_alive:
-		# Animations
 		if mouse_direction.x > 0 and animated_sprite.flip_h:
 			animated_sprite.flip_h = false
 		elif mouse_direction.x < 0 and not animated_sprite.flip_h:
@@ -24,7 +23,6 @@ func _process(delta: float):
 		if move_direction != Vector2.ZERO:
 			animated_sprite.play("run")
 		else:
-			# player is idle
 			animated_sprite.play("idle") 
 		
 		weapon.look_at(get_global_mouse_position())
@@ -106,6 +104,11 @@ func shoot():
 func handle_camera():
 	var new_camera_position = global_position + (get_global_mouse_position() - global_position) * SMOOTH
 	$Camera2D.global_position = new_camera_position
+
+func player_take_damage(damage: int):
+	self.hp -= 30
+	if self.hp <= 0:
+		queue_free()
 
 func weaponManager():
 	if weapon == $Pistol:
