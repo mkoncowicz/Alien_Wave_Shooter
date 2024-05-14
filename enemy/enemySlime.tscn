@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://1tff1negtcse"]
+[gd_scene load_steps=23 format=3 uid="uid://1tff1negtcse"]
 
 [ext_resource type="Script" path="res://enemy/enemySlime.gd" id="1_n53ob"]
 [ext_resource type="Texture2D" uid="uid://c82d1npb5r52p" path="res://Assets/enemySlime.png" id="2_grgyc"]
@@ -142,10 +142,7 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_l287r"]
 radius = 10.5
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5iimv"]
-radius = 100.0
-
-[node name="EnemySlime" type="CharacterBody2D"]
+[node name="EnemySlime" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_n53ob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -174,12 +171,6 @@ shape = SubResource("CircleShape2D_l287r")
 wait_time = 0.5
 autostart = true
 
-[node name="DetectRadius" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius"]
-shape = SubResource("CircleShape2D_5iimv")
-
-[connection signal="body_entered" from="DetectRadius" to="." method="_on_detect_radius_body_entered"]
-[connection signal="body_exited" from="DetectRadius" to="." method="_on_detect_radius_body_exited"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
