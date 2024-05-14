@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://byv3ouijmupo7"]
+[gd_scene load_steps=26 format=3 uid="uid://byv3ouijmupo7"]
 
 [ext_resource type="Script" path="res://enemy/enemyAlien.gd" id="1_iqoav"]
 [ext_resource type="Texture2D" uid="uid://buh3tl8wixqnh" path="res://Assets/enemyAlien.png" id="2_turgk"]
@@ -160,12 +160,16 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7vimr"]
-radius = 0.005
-height = 0.01
+radius = 5.0
+height = 16.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m8lb3"]
 radius = 0.005
 height = 0.01
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fkdpm"]
+radius = 6.0
+height = 18.0
 
 [node name="EnemyAlien" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_iqoav")
@@ -177,7 +181,7 @@ frame = 2
 frame_progress = 0.958485
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 2)
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_7vimr")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -186,6 +190,13 @@ shape = SubResource("CapsuleShape2D_7vimr")
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_m8lb3")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_fkdpm")
+
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

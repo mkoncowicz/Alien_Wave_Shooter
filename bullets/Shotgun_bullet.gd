@@ -1,6 +1,6 @@
 extends Area2D
 
-@export  var bullet_speed: int = 4
+@export  var bullet_speed: int = 5
 
 func _ready():
 	pass 
@@ -14,4 +14,6 @@ func destroy():
 	queue_free()
 	
 func _on_PistolBullet_body_entered(body: Node):
-	destroy()
+	queue_free()
+	if body.has_method("take_damage"):
+		body.take_damage(30)

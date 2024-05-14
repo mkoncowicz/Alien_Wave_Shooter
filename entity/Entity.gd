@@ -34,17 +34,13 @@ func move():
 	velocity += move_direction * speed 
 	velocity = velocity.limit_length(max_speed)        # clamp speed	
 
-func receive_damage(damage: int):
-	self.hp -= damage
+func take_damage(damage: int):
+	self.hp -= 30
+	if self.hp <= 0:
+		queue_free()
 
 func set_hp(value):
-	if value != hp:
-		hp = clamp(value, 0, hp_max) # clamp health
-		emit_signal("hp_changed", hp)
-		if hp == 0:
-			coll_shape.set_deferred("disabled", true)
-			$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
-			emit_signal("died")
+	hp = value
 			
 func get_hp():
 	return hp

@@ -4100,9 +4100,10 @@ position = Vector2(932, 464)
 position = Vector2(1104, 704)
 
 [node name="EnemySlime" parent="." instance=ExtResource("6_46p6f")]
-position = Vector2(1088, 215)
+position = Vector2(1254, 124)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-3, -18)
 navigation_polygon = SubResource("NavigationPolygon_s28q1")
 
@@ -4110,4 +4111,25 @@ navigation_polygon = SubResource("NavigationPolygon_s28q1")
 environment = SubResource("Environment_mhsxo")
 
 [node name="EnemyAlien" parent="." instance=ExtResource("8_f86x6")]
-position = Vector2(216, 675)
+position = Vector2(493, 682)
+
+[node name="EnemySlime2" parent="." instance=ExtResource("6_46p6f")]
+position = Vector2(1345, 224)
+
+[node name="EnemySlime3" parent="." instance=ExtResource("6_46p6f")]
+position = Vector2(1280, 171)
+
+[node name="EnemySlime4" parent="." instance=ExtResource("6_46p6f")]
+position = Vector2(1228, 254)
+
+[node name="EnemySlime5" parent="." instance=ExtResource("6_46p6f")]
+position = Vector2(1166, 120)
+
+[node name="EnemyAlien2" parent="." instance=ExtResource("8_f86x6")]
+position = Vector2(404, 691)
+
+[node name="EnemyAlien3" parent="." instance=ExtResource("8_f86x6")]
+position = Vector2(458, 697)
+
+[node name="EnemyAlien4" parent="." instance=ExtResource("8_f86x6")]
+position = Vector2(388, 641)
