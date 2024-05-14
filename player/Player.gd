@@ -1,6 +1,6 @@
 extends Entity
 
-const SMOOTH := 0.1
+const SMOOTH := 0.09
 var is_alive : bool = true
 @export var bullet: PackedScene = preload("res://bullets/Pistol_bullet.tscn")
 @export var Machinegun_bullet: PackedScene = preload("res://bullets/Machinegun_bullet.tscn")
@@ -34,7 +34,7 @@ func _process(delta: float):
 		else:
 			weapon.flip_v = false
 			weapon.offset = Vector2(3, 1)
-		
+		handle_camera()
 		get_input()
 		weaponManager()
 		
@@ -103,6 +103,9 @@ func shoot():
 		bullet_instance.rotation_degrees = weapon.rotation_degrees
 		fire_speed.start()
 
+func handle_camera():
+	var new_camera_position = global_position + (get_global_mouse_position() - global_position) * SMOOTH
+	$Camera2D.global_position = new_camera_position
 
 func weaponManager():
 	if weapon == $Pistol:
