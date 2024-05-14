@@ -113,12 +113,13 @@ visible = false
 zoom = Vector2(0.6, 0.6)
 
 [node name="Pistol" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 4)
 texture = ExtResource("3_ctdbs")
 offset = Vector2(5, 1)
 
 [node name="Pistol_muzzle" type="Node2D" parent="Pistol"]
-position = Vector2(14, 2)
+position = Vector2(13, -2)
 
 [node name="Machinegun" type="Sprite2D" parent="."]
 visible = false
@@ -127,16 +128,15 @@ texture = ExtResource("4_yraj0")
 offset = Vector2(3, 1)
 
 [node name="Machinegun_muzzle" type="Node2D" parent="Machinegun"]
-position = Vector2(18, 2)
+position = Vector2(18, -2)
 
 [node name="Railgun" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, 4)
 texture = ExtResource("5_u1go7")
 offset = Vector2(3, 1)
 
 [node name="Railgun_muzzle" type="Node2D" parent="Railgun"]
-position = Vector2(18, 2)
+position = Vector2(18, 0)
 
 [node name="Shotgun" type="Sprite2D" parent="."]
 visible = false
@@ -145,7 +145,13 @@ texture = ExtResource("6_hql4s")
 offset = Vector2(3, 1)
 
 [node name="Shotgun_muzzle" type="Node2D" parent="Shotgun"]
-position = Vector2(18, 3)
+position = Vector2(18, 1)
+
+[node name="Shotgun_muzzle2" type="Node2D" parent="Shotgun"]
+position = Vector2(16, -8)
+
+[node name="Shotgun_muzzle3" type="Node2D" parent="Shotgun"]
+position = Vector2(16, 10)
 
 [node name="Fire_speed" type="Timer" parent="."]
 wait_time = 0.3

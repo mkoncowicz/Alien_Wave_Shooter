@@ -1,11 +1,17 @@
-extends Node2D
+extends Area2D
 
+@export  var bullet_speed: int = 4
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
+func _physics_process(delta):
+	var direction = Vector2.RIGHT.rotated(rotation)
+	global_position += bullet_speed * direction	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func destroy():
+
+	queue_free()
+	
+func _on_MachinegunBullet_body_entered(body: Node):
+	destroy()

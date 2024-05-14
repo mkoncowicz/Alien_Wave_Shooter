@@ -3,8 +3,13 @@ extends Entity
 const SMOOTH := 0.1
 var is_alive : bool = true
 @export var bullet: PackedScene = preload("res://bullets/Pistol_bullet.tscn")
+@export var Machinegun_bullet: PackedScene = preload("res://bullets/Machinegun_bullet.tscn")
+@export var Shotgun_bullet: PackedScene = preload("res://bullets/Shotgun_bullet.tscn")
+@export var Railgun_bullet: PackedScene = preload("res://bullets/Railgun_bullet.tscn")
 @onready var weapon = $Pistol
 @onready var muzzle = $Pistol/Pistol_muzzle
+@onready var Shotgun_muzzle2 = $Shotgun/Shotgun_muzzle2
+@onready var Shotgun_muzzle3 = $Shotgun/Shotgun_muzzle3
 @onready var fire_speed = $Fire_speed
 func _process(delta: float):
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
@@ -46,7 +51,6 @@ func get_input():
 			move_direction += Vector2.RIGHT
 			
 		if Input.is_action_pressed("fire") and fire_speed.is_stopped():
-			print("xx")
 			shoot()
 			
 		if Input.is_action_pressed("weapon_pistol"):
@@ -64,8 +68,36 @@ func get_input():
 			muzzle = $Railgun/Railgun_muzzle
 
 func shoot():
-	if bullet:
+	if weapon == $Pistol:
 		var bullet_instance = bullet.instantiate()
+		get_tree().current_scene.add_child(bullet_instance)
+		bullet_instance.global_position = muzzle.global_position
+		bullet_instance.rotation_degrees = weapon.rotation_degrees
+		fire_speed.start()
+	if weapon == $Machinegun:
+		var bullet_instance = Machinegun_bullet.instantiate()
+		get_tree().current_scene.add_child(bullet_instance)
+		bullet_instance.global_position = muzzle.global_position
+		bullet_instance.rotation_degrees = weapon.rotation_degrees
+		fire_speed.start()
+	if weapon == $Shotgun:
+		var bullet_instance = Shotgun_bullet.instantiate()
+		get_tree().current_scene.add_child(bullet_instance)
+		bullet_instance.global_position = muzzle.global_position
+		bullet_instance.rotation_degrees = weapon.rotation_degrees
+		
+		var bullet_instance2 = Shotgun_bullet.instantiate()
+		get_tree().current_scene.add_child(bullet_instance2)
+		bullet_instance2.global_position = Shotgun_muzzle2.global_position
+		bullet_instance2.rotation_degrees = weapon.rotation_degrees
+		
+		var bullet_instance3 = Shotgun_bullet.instantiate()
+		get_tree().current_scene.add_child(bullet_instance3)
+		bullet_instance3.global_position = Shotgun_muzzle3.global_position
+		bullet_instance3.rotation_degrees = weapon.rotation_degrees
+		fire_speed.start()
+	if weapon == $Railgun:
+		var bullet_instance = Railgun_bullet.instantiate()
 		get_tree().current_scene.add_child(bullet_instance)
 		bullet_instance.global_position = muzzle.global_position
 		bullet_instance.rotation_degrees = weapon.rotation_degrees

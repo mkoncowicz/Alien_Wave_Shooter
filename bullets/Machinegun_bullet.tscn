@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg1al177o3isy"]
+[gd_scene load_steps=4 format=3 uid="uid://dg1al177o3isy"]
 
 [ext_resource type="Script" path="res://bullets/Machinegun_bullet.gd" id="1_rfexq"]
+[ext_resource type="Texture2D" uid="uid://c8osf7lpb3fuk" path="res://Assets/Machinegun_bullet.png" id="2_knagm"]
 
-[node name="MachinegunBullet" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2p81"]
+radius = 3.0
+height = 8.0
+
+[node name="MachinegunBullet" type="Area2D"]
 script = ExtResource("1_rfexq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_knagm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_i2p81")
+
+[connection signal="body_entered" from="." to="." method="_on_MachinegunBullet_body_entered"]
