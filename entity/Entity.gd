@@ -52,3 +52,4 @@ func get_hp():
 func set_hp_max(value):
 	if value != hp_max:
 		hp_max = max(0, value)
+
