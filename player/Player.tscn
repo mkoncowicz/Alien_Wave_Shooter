@@ -1,11 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://bibw8h6hfvg0t"]
+[gd_scene load_steps=33 format=3 uid="uid://bibw8h6hfvg0t"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_0juml"]
 [ext_resource type="Texture2D" uid="uid://mhofwy7wx3y6" path="res://Assets/player.png" id="2_vgfvy"]
 [ext_resource type="Texture2D" uid="uid://bvkn8tu251urt" path="res://Assets/Pistol.png" id="3_ctdbs"]
-[ext_resource type="Texture2D" uid="uid://elfafegbvqtl" path="res://Assets/Machinegun.png" id="4_yraj0"]
-[ext_resource type="Texture2D" uid="uid://4e784igqh0ll" path="res://Assets/Railgun.png" id="5_u1go7"]
-[ext_resource type="Texture2D" uid="uid://v87c37vnpxfx" path="res://Assets/Shotgun.png" id="6_hql4s"]
+[ext_resource type="Texture2D" uid="uid://bjyqtgbx2lb42" path="res://Assets/Machinegun (copy).png" id="4_rdkhw"]
+[ext_resource type="Texture2D" uid="uid://8uv063llckhh" path="res://Assets/Railgun (copy).png" id="5_c53iw"]
+[ext_resource type="Texture2D" uid="uid://c26wiwyw83u6f" path="res://Assets/Shotgun (copy).png" id="6_we4x1"]
+[ext_resource type="Texture2D" uid="uid://cdo8cdu7x3lw2" path="res://Assets/Pistol_fire.png" id="7_jcoj3"]
+[ext_resource type="Texture2D" uid="uid://1eqyep8xs3sm" path="res://Assets/Machinegun_fire.png" id="7_rbkmg"]
+[ext_resource type="Script" path="res://player/Fire_animation.gd" id="8_p4g2r"]
+[ext_resource type="Texture2D" uid="uid://b24cwbgnn6pef" path="res://Assets/Railgun_fire.png" id="9_vqtp2"]
+[ext_resource type="Texture2D" uid="uid://cvujci2no8g7i" path="res://Assets/Shotgun_fire.png" id="10_qtjh5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5e8t"]
 atlas = ExtResource("2_vgfvy")
@@ -94,6 +99,85 @@ animations = [{
 radius = 5.0
 height = 14.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch2ji"]
+atlas = ExtResource("7_rbkmg")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okw5p"]
+atlas = ExtResource("7_rbkmg")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4mpg"]
+atlas = ExtResource("7_jcoj3")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hltfl"]
+atlas = ExtResource("7_jcoj3")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dmhd"]
+atlas = ExtResource("9_vqtp2")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5vhf"]
+atlas = ExtResource("9_vqtp2")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u23n"]
+atlas = ExtResource("10_qtjh5")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8okql"]
+atlas = ExtResource("10_qtjh5")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t3a33"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch2ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okw5p")
+}],
+"loop": true,
+"name": &"machinegun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4mpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hltfl")
+}],
+"loop": true,
+"name": &"pistol",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dmhd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5vhf")
+}],
+"loop": true,
+"name": &"railgun",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u23n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8okql")
+}],
+"loop": true,
+"name": &"shotgun",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 script = ExtResource("1_0juml")
@@ -101,7 +185,7 @@ hp = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_me65e")
-animation = &"idle"
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -114,45 +198,68 @@ position_smoothing_speed = 30.0
 
 [node name="Pistol" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 4)
+position = Vector2(0, 5)
+rotation = -0.00872665
 texture = ExtResource("3_ctdbs")
-offset = Vector2(5, 1)
+offset = Vector2(5, 0)
 
 [node name="Pistol_muzzle" type="Node2D" parent="Pistol"]
-position = Vector2(13, -2)
+position = Vector2(13.9907, 1.12213)
+
+[node name="Pistol_flash" type="Node2D" parent="Pistol"]
+position = Vector2(8.99966, 0.0785388)
 
 [node name="Machinegun" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 4)
-texture = ExtResource("4_yraj0")
-offset = Vector2(3, 1)
+position = Vector2(0, 6)
+texture = ExtResource("4_rdkhw")
+offset = Vector2(3, 0)
 
 [node name="Machinegun_muzzle" type="Node2D" parent="Machinegun"]
-position = Vector2(18, -2)
+position = Vector2(14, 0)
+
+[node name="Machinegun_flash" type="Node2D" parent="Machinegun"]
+position = Vector2(12, 0)
 
 [node name="Railgun" type="Sprite2D" parent="."]
-position = Vector2(0, 4)
-texture = ExtResource("5_u1go7")
-offset = Vector2(3, 1)
+position = Vector2(1, 7)
+texture = ExtResource("5_c53iw")
+offset = Vector2(3, 0)
 
 [node name="Railgun_muzzle" type="Node2D" parent="Railgun"]
-position = Vector2(18, 0)
+position = Vector2(14, 0)
+
+[node name="Railgun_flash" type="Node2D" parent="Railgun"]
+position = Vector2(12, 0)
 
 [node name="Shotgun" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, 4)
-texture = ExtResource("6_hql4s")
-offset = Vector2(3, 1)
+position = Vector2(0, 6)
+texture = ExtResource("6_we4x1")
+offset = Vector2(3, 0)
 
 [node name="Shotgun_muzzle" type="Node2D" parent="Shotgun"]
-position = Vector2(18, 1)
+position = Vector2(16, 0)
 
 [node name="Shotgun_muzzle2" type="Node2D" parent="Shotgun"]
-position = Vector2(16, -8)
+position = Vector2(16, 0)
 
 [node name="Shotgun_muzzle3" type="Node2D" parent="Shotgun"]
-position = Vector2(16, 10)
+position = Vector2(16, 0)
+
+[node name="Shotgun_flash" type="Node2D" parent="Shotgun"]
+position = Vector2(13, 0)
 
 [node name="Fire_speed" type="Timer" parent="."]
 wait_time = 0.3
+one_shot = true
+
+[node name="Fire_animation" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(24, -2)
+sprite_frames = SubResource("SpriteFrames_t3a33")
+animation = &"shotgun"
+script = ExtResource("8_p4g2r")
+
+[node name="Weapon_change" type="Timer" parent="."]
 one_shot = true

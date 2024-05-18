@@ -17,4 +17,7 @@ texture = ExtResource("2_knagm")
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_i2p81")
 
+[node name="Hit_point" type="Node2D" parent="."]
+position = Vector2(4, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_MachinegunBullet_body_entered"]

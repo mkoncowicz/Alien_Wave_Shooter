@@ -15,4 +15,7 @@ texture = ExtResource("2_vc451")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wpc0b")
 
+[node name="Hit_point" type="Node2D" parent="."]
+position = Vector2(4, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_PistolBullet_body_entered"]
