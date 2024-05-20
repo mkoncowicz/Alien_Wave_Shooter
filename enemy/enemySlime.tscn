@@ -90,8 +90,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gvcjk")
+}, {
+"duration": 1.0,
+"texture": null
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 10.0
 }, {
@@ -107,7 +110,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,7 +150,9 @@ script = ExtResource("1_n53ob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ldl8w")
-animation = &"death"
+animation = &"hit"
+frame = 2
+frame_progress = 0.021791
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 3)

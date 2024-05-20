@@ -1,8 +1,13 @@
 extends Entity
 
 @onready var nav_agent = $NavigationAgent2D
+var is_dead = false
+var is_hit = false
 
 func _physics_process(delta):
+	if is_dead or is_hit:
+		return
+	
 	animated_sprite.play("move")
 	
 	var current_location = global_transform.origin
@@ -18,9 +23,40 @@ func _physics_process(delta):
 		animated_sprite.flip_h = false
 
 func update_target_location(target_location):
+	if is_dead or is_hit:
+		return
 	nav_agent.target_position = target_location
-
 
 func _on_hitbox_body_entered(body):
 	if body.has_method("player_take_damage"):
 		body.take_damage(30)
+
+func take_damage(damage: int):
+	self.hp -= damage
+	if self.hp <= 0:
+		die()
+	else:
+		play_hit_animation()
+
+func die():
+	if is_dead:
+		return
+	is_dead = true
+	animated_sprite.play("death")
+	$CollisionShape2D.set_deferred("disabled", true) # Disable collision
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true) # Disable hurtbox collision
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true) # Disable hitbox collision
+	await get_tree().create_timer(1.0).timeout # Wait for the death animation to finish
+	queue_free()
+
+func play_hit_animation():
+	is_hit = true
+	animated_sprite.play("hit")
+	$CollisionShape2D.set_deferred("disabled", true)  # Disable collision temporarily
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)  # Disable hurtbox collision temporarily
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)  # Disable hitbox collision temporarily
+	await get_tree().create_timer(0.5).timeout  # Adjust duration to match hit animation length
+	is_hit = false
+	$CollisionShape2D.set_deferred("disabled", false)  # Re-enable collision
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", false)  # Re-enable hurtbox collision
+	$Hitbox/CollisionShape2D.set_deferred("disabled", false)  # Re-enable hitbox collision

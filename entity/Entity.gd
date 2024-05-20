@@ -17,10 +17,7 @@ const FRICTION: float = 0.15
 @onready var animated_sprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var coll_shape = $CollisionShape2D
 
-
-
 var move_direction: Vector2 = Vector2.ZERO 
-
 
 func _physics_process(delta):
 	set_velocity(velocity)

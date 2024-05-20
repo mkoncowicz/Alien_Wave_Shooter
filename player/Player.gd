@@ -78,7 +78,6 @@ func get_input():
 			muzzle = $Railgun/Railgun_muzzle
 			flash_position = $Railgun/Railgun_flash
 
-
 func shoot():
 	if weapon == $Pistol:
 		var bullet_instance = bullet.instantiate()
