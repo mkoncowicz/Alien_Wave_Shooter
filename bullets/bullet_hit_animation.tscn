@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://03f33d4go12w"]
+[gd_scene load_steps=20 format=3 uid="uid://03f33d4go12w"]
 
 [ext_resource type="Texture2D" uid="uid://qidyb82yk11k" path="res://Assets/Machinegun_bullet destroy.png" id="1_a08ey"]
 [ext_resource type="Texture2D" uid="uid://bj5cvi0vo7y4l" path="res://Assets/Pistol_bullet destroy.png" id="1_c66s4"]
 [ext_resource type="Script" path="res://Bullet_hit_animation.gd" id="2_qoi5p"]
 [ext_resource type="Texture2D" uid="uid://c4kgf2gar808h" path="res://Assets/Railgun_bullet destroy.png" id="3_nwinn"]
 [ext_resource type="Texture2D" uid="uid://br71dqn5kv5k0" path="res://Assets/Shotgun_bullet destroy.png" id="4_u61mv"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="6_0p2bt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vwo6"]
 atlas = ExtResource("1_a08ey")
@@ -115,8 +116,13 @@ animations = [{
 
 [node name="Bullet_hit_animation" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_pnlea")
-animation = &"Shotgun"
+animation = &"Pistol"
 speed_scale = 1.5
 script = ExtResource("2_qoi5p")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.0399258, 0.0360195)
+color = Color(0.976471, 1, 0, 1)
+texture = ExtResource("6_0p2bt")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
