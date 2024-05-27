@@ -1,0 +1,173 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4udkjchhk7vb"]
+
+[ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="1_j3l0x"]
+[ext_resource type="Script" path="res://interface/Main_interface.gd" id="1_wk7nu"]
+[ext_resource type="Texture2D" uid="uid://qexyg7gehto5" path="res://Assets/Shade1.png" id="3_momr7"]
+[ext_resource type="Texture2D" uid="uid://c0xv5nneyf4ys" path="res://Assets/Shade2.png" id="4_25vmm"]
+[ext_resource type="Texture2D" uid="uid://df4hsgbv3qpth" path="res://Assets/logo.png" id="5_iehad"]
+[ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="6_vdlwe"]
+[ext_resource type="FontFile" uid="uid://c5h6p487fheoc" path="res://Assets/BebasNeue-Regular.ttf" id="7_6a4ek"]
+
+[node name="MainInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk7nu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j3l0x")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -129.0
+offset_top = -103.0
+offset_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_momr7")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 140.0
+offset_bottom = 140.0
+texture = ExtResource("4_25vmm")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 117.0
+offset_bottom = 117.0
+texture = ExtResource("5_iehad")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 239.0
+offset_top = 157.0
+offset_right = -12.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_6a4ek")
+theme_override_font_sizes/normal_font_size = 14
+text = "           Quit"
+fit_content = true
+scroll_active = false
+
+[node name="TextureRect5" type="TextureRect" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vdlwe")
+expand_mode = 1
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 239.0
+offset_top = 134.0
+offset_right = -12.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_6a4ek")
+theme_override_font_sizes/normal_font_size = 14
+text = "        Credits"
+fit_content = true
+scroll_active = false
+
+[node name="TextureRect5" type="TextureRect" parent="TextureButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vdlwe")
+expand_mode = 1
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 239.0
+offset_top = 110.0
+offset_right = -12.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_6a4ek")
+theme_override_font_sizes/normal_font_size = 14
+text = "          Start"
+fit_content = true
+scroll_active = false
+
+[node name="TextureRect5" type="TextureRect" parent="TextureButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_vdlwe")
+expand_mode = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]

@@ -155,6 +155,3 @@ func weaponManager():
 		$Shotgun.set_visible(false)
 		$Railgun.set_visible(true)
 
-
-
-

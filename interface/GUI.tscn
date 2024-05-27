@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkyrf2tjtbnpp"]
+
+[ext_resource type="Script" path="res://interface/GUI.gd" id="1_bxcld"]
+[ext_resource type="Texture2D" uid="uid://ysotur31yyv2" path="res://Assets/health_bar.png" id="1_lfcgf"]
+[ext_resource type="Texture2D" uid="uid://d0qcoyj7mxr0k" path="res://Assets/slot.png" id="2_0ctt6"]
+[ext_resource type="Texture2D" uid="uid://b3loev7urvxel" path="res://Assets/pause.png" id="3_enlfb"]
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bxcld")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -131.0
+offset_top = 125.0
+offset_right = 132.0
+offset_bottom = 145.0
+texture = ExtResource("1_lfcgf")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -15.0
+offset_right = 47.0
+theme_override_colors/font_color = Color(0.0156863, 0.803922, 0.513726, 1)
+theme_override_font_sizes/font_size = 10
+text = "HP"
+
+[node name="Label2" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = -15.0
+offset_right = 205.0
+theme_override_colors/font_color = Color(0.0156863, 0.803922, 0.513726, 1)
+theme_override_font_sizes/font_size = 10
+text = "SCORE:"
+
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = -107.0
+offset_right = -213.0
+offset_bottom = -64.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ctt6")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = -50.0
+offset_right = -213.0
+offset_bottom = -7.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ctt6")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = 7.0
+offset_right = -213.0
+offset_bottom = 50.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ctt6")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = -256.0
+offset_top = 64.0
+offset_right = -213.0
+offset_bottom = 107.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_0ctt6")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 238.0
+offset_top = -144.0
+offset_right = 259.0
+offset_bottom = -123.0
+
+[node name="TextureRect2" type="TextureRect" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -21.0
+offset_bottom = 21.0
+grow_horizontal = 0
+texture = ExtResource("3_enlfb")
+expand_mode = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
