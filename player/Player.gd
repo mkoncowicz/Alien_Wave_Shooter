@@ -133,6 +133,11 @@ func player_take_damage(damage: int):
 	if self.hp <= 0:
 		queue_free()
 
+func heal(value):
+	hp += value
+	hp = clamp(hp, 0, hp_max)
+	emit_signal("hp_changed", hp * 100/hp_max)
+
 func weaponManager():
 	if weapon == $Pistol:
 		$Pistol.set_visible(true)

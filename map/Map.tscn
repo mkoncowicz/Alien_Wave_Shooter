@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=17 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1tff1negtcse" path="res://enemy/enemySlime.tscn" id="6_46p6f"]
 [ext_resource type="PackedScene" uid="uid://byv3ouijmupo7" path="res://enemy/enemyAlien.tscn" id="8_f86x6"]
 [ext_resource type="PackedScene" uid="uid://dyot1bhutshr3" path="res://torch/torch.tscn" id="9_wjj4n"]
+[ext_resource type="PackedScene" uid="uid://dny0n80v6eq6n" path="res://pickups/AidKit.tscn" id="10_6hwa6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dj73s"]
 texture = ExtResource("2_0qmj0")
@@ -4176,3 +4177,8 @@ position = Vector2(1105, 692)
 
 [node name="Torch10" parent="torches" instance=ExtResource("9_wjj4n")]
 position = Vector2(147, 269)
+
+[node name="pickups" type="Node2D" parent="."]
+
+[node name="AidKit" parent="pickups" instance=ExtResource("10_6hwa6")]
+position = Vector2(418, 382)
