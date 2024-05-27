@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cunffhudhib7r"]
+[gd_scene load_steps=8 format=3 uid="uid://cunffhudhib7r"]
 
+[ext_resource type="Texture2D" uid="uid://dg1a0yq0uc1yy" path="res://Assets/shipmark.png" id="1_pkkqg"]
 [ext_resource type="Texture2D" uid="uid://d1bdwvvuone17" path="res://Assets/spaceship.png" id="1_rij8y"]
 [ext_resource type="Material" uid="uid://ccxhx8mqkwu7y" path="res://torch/torch_partickle.tres" id="2_2qj6w"]
 [ext_resource type="Texture2D" uid="uid://c4gcmdf8etvd8" path="res://Assets/torch_texture.png" id="3_217ly"]
@@ -13,8 +14,16 @@ radius = 79.0063
 
 [node name="Spaceship" type="StaticBody2D"]
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-36, -16)
+rotation = 0.272687
+scale = Vector2(0.987805, 1)
+texture = ExtResource("1_pkkqg")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
 rotation = 1.91637
+scale = Vector2(1, 1)
 texture = ExtResource("1_rij8y")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
