@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://byv3ouijmupo7"]
+[gd_scene load_steps=26 format=3 uid="uid://byv3ouijmupo7"]
 
 [ext_resource type="Script" path="res://enemy/enemyAlien.gd" id="1_iqoav"]
 [ext_resource type="Texture2D" uid="uid://buh3tl8wixqnh" path="res://Assets/enemyAlien.png" id="2_turgk"]
@@ -171,9 +171,6 @@ height = 0.01
 radius = 6.0
 height = 18.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2wocv"]
-load_path = "res://Assets/light.png-110d8c24aabb8f52a1bad1d10ea54b0b.ctex"
-
 [node name="EnemyAlien" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_iqoav")
 
@@ -184,33 +181,22 @@ frame = 2
 frame_progress = 0.865258
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_7vimr")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-visible = false
 position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_m8lb3")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_fkdpm")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.551838, 0.531635)
-color = Color(0.482353, 0.788235, 0.298039, 1)
-energy = 0.8
-texture = SubResource("CompressedTexture2D_2wocv")
-texture_scale = 0.1
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]

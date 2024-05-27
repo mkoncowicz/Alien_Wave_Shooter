@@ -44,20 +44,21 @@ func die():
 	
 	is_dead = true
 	animated_sprite.play("death")
-	$CollisionShape2D.set_deferred("disabled", true) # Disable collision
-	$Hurtbox/CollisionShape2D.set_deferred("disabled", true) # Disable hurtbox collision
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true) # Disable hitbox collision
-	await get_tree().create_timer(1.0).timeout # Wait for the death animation to finish
+	$CollisionShape2D.set_deferred("disabled", true) 
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true) 
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true) 
+	$PointLight2D2.set_deferred("enabled", false)
+	await get_tree().create_timer(1.0).timeout 
 	queue_free()
 
 func play_hit_animation():
 	is_hit = true
 	animated_sprite.play("hit")
-	$CollisionShape2D.set_deferred("disabled", true)  # Disable collision temporarily
-	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)  # Disable hurtbox collision temporarily
-	$Hitbox/CollisionShape2D.set_deferred("disabled", true)  # Disable hitbox collision temporarily
-	await get_tree().create_timer(0.5).timeout  # Adjust duration to match hit animation length
+	$CollisionShape2D.set_deferred("disabled", true) 
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true) 
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true) 
+	await get_tree().create_timer(0.5).timeout 
 	is_hit = false
-	$CollisionShape2D.set_deferred("disabled", false)  # Re-enable collision
-	$Hurtbox/CollisionShape2D.set_deferred("disabled", false)  # Re-enable hurtbox collision
-	$Hitbox/CollisionShape2D.set_deferred("disabled", false)  # Re-enable hitbox collision
+	$CollisionShape2D.set_deferred("disabled", false) 
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", false) 
+	$Hitbox/CollisionShape2D.set_deferred("disabled", false) 

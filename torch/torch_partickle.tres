@@ -1,0 +1,18 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=2 format=3 uid="uid://ccxhx8mqkwu7y"]
+
+[ext_resource type="Texture2D" uid="uid://bjhx8hgwoj22n" path="res://torch/torch_gradient_texture_1d.tres" id="1_w38e5"]
+
+[resource]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector3(0, -1, 0)
+spread = 6.0
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+damping_min = 0.455
+damping_max = 1.364
+scale_min = 0.15
+scale_max = 0.8
+color_ramp = ExtResource("1_w38e5")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://celnbic03hgan"]
+[gd_scene load_steps=5 format=3 uid="uid://celnbic03hgan"]
 
 [ext_resource type="Script" path="res://bullets/Pistol_bullet.gd" id="1_mbiyt"]
 [ext_resource type="Texture2D" uid="uid://bxptk6wwu4ugh" path="res://Assets/Pistol_bullet.png" id="2_wu51j"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="3_cd3kt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hdr4"]
 radius = 3.0
@@ -21,5 +22,11 @@ shape = SubResource("CapsuleShape2D_0hdr4")
 
 [node name="Hit_point" type="Node2D" parent="."]
 position = Vector2(4, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.0287981, 0.0188762)
+color = Color(0.976471, 1, 0, 1)
+energy = 2.0
+texture = ExtResource("3_cd3kt")
 
 [connection signal="body_entered" from="." to="." method="_on_PistolBullet_body_entered"]

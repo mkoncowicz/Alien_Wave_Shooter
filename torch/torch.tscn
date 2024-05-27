@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyot1bhutshr3"]
+
+[ext_resource type="Material" uid="uid://ccxhx8mqkwu7y" path="res://torch/torch_partickle.tres" id="1_7k5vg"]
+[ext_resource type="Texture2D" uid="uid://c4gcmdf8etvd8" path="res://Assets/torch_texture.png" id="2_3eqbb"]
+[ext_resource type="Texture2D" uid="uid://dsfehkylyvr3u" path="res://Assets/torch.png" id="3_afr4h"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="4_fdegu"]
+
+[node name="Torch" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, 1)
+amount = 391
+process_material = ExtResource("1_7k5vg")
+texture = ExtResource("2_3eqbb")
+preprocess = 1.0
+speed_scale = 0.6
+fixed_fps = 23
+
+[node name="Torch" type="Sprite2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(0.6, 0.687)
+texture = ExtResource("3_afr4h")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.635294, 1)
+energy = 1.3
+blend_mode = 2
+texture = ExtResource("4_fdegu")
+texture_scale = 0.1
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.698039, 1)
+energy = 0.5
+texture = ExtResource("4_fdegu")
+texture_scale = 0.4
