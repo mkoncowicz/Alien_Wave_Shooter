@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://v006i7etheg6"]
+[gd_scene load_steps=7 format=3 uid="uid://v006i7etheg6"]
 
 [ext_resource type="Script" path="res://interface/Pause.gd" id="1_l5sar"]
 [ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="2_cfgo3"]
 [ext_resource type="Texture2D" uid="uid://c0xv5nneyf4ys" path="res://Assets/Shade2.png" id="3_34olf"]
 [ext_resource type="FontFile" uid="uid://c5h6p487fheoc" path="res://Assets/BebasNeue-Regular.ttf" id="4_3bnw3"]
+[ext_resource type="Texture2D" uid="uid://cs0k0spkui6ql" path="res://Assets/hover.png" id="4_3g2xi"]
 [ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="5_ahatb"]
 
 [node name="Pause" type="Control"]
@@ -58,21 +59,26 @@ offset_right = 4.57764e-05
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
+texture_hover = ExtResource("4_3g2xi")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureButton"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("4_3bnw3")
-theme_override_font_sizes/normal_font_size = 14
-text = "      Resume"
+theme_override_font_sizes/normal_font_size = 12
+text = "          Resume"
 fit_content = true
 scroll_active = false
 
 [node name="TextureRect5" type="TextureRect" parent="TextureButton"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

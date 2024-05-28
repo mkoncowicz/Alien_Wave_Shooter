@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch6j8e2humtxq"]
+[gd_scene load_steps=7 format=3 uid="uid://ch6j8e2humtxq"]
 
 [ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="1_0lsvu"]
 [ext_resource type="Script" path="res://interface/Credits.gd" id="1_2gm68"]
 [ext_resource type="Texture2D" uid="uid://c0xv5nneyf4ys" path="res://Assets/Shade2.png" id="2_pv120"]
 [ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="3_b3oj8"]
 [ext_resource type="FontFile" uid="uid://c5h6p487fheoc" path="res://Assets/BebasNeue-Regular.ttf" id="4_8ktqq"]
+[ext_resource type="Texture2D" uid="uid://cs0k0spkui6ql" path="res://Assets/hover.png" id="4_weasq"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -59,35 +60,39 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 34.0
+offset_left = 30.0
 offset_top = 71.0
-offset_right = -32.0
-offset_bottom = -28.0
+offset_right = -27.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
+texture_hover = ExtResource("4_weasq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2/TextureButton"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -0.5
-offset_bottom = -0.5
+offset_left = 1.0
+offset_top = 1.5
+offset_right = 1.0
+offset_bottom = 1.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("4_8ktqq")
-theme_override_font_sizes/normal_font_size = 14
-text = "         Quit"
+theme_override_font_sizes/normal_font_size = 12
+text = "             Quit"
 fit_content = true
 scroll_active = false
 
 [node name="TextureRect5" type="TextureRect" parent="TextureRect2/TextureButton"]
+show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1.5
-offset_bottom = -1.5
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_b3oj8")
