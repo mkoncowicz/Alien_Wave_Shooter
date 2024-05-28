@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ko7roeo1l654"]
+[gd_scene load_steps=5 format=3 uid="uid://ko7roeo1l654"]
 
 [ext_resource type="Texture2D" uid="uid://bv2teh7d0fm7h" path="res://Assets/col02.png" id="1_lh32a"]
 
@@ -16,6 +16,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ufwjd"]
 size = Vector2(26, 20)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hc38t"]
+polygon = PackedVector2Array(-12, -10, -12, 8, 12, 8, 12, -10)
+
 [node name="Column2" type="StaticBody2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -24,3 +27,6 @@ sprite_frames = SubResource("SpriteFrames_8xmco")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_ufwjd")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CollisionShape2D"]
+occluder = SubResource("OccluderPolygon2D_hc38t")

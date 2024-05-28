@@ -23,7 +23,6 @@ texture = ExtResource("1_pkkqg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 9.53674e-07)
 rotation = 1.91637
-scale = Vector2(1, 1)
 texture = ExtResource("1_rij8y")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
