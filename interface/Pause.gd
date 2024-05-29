@@ -13,3 +13,8 @@ func _on_texture_button_pressed():
 	get_tree().change_scene_to_file("res://map/Map.tscn")
 	print("ok")
 	pass # Replace with function body.
+
+
+func _on_texture_button_2_pressed():
+	get_tree().quit()
+	pass # Replace with function body.

@@ -33,7 +33,7 @@ anchor_left = 2.45
 anchor_top = 1.0
 anchor_right = 5.6
 anchor_bottom = 3.075
-offset_right = -1.52588e-05
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_34olf")
@@ -41,22 +41,23 @@ expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 21.0
-offset_right = 118.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = 18.0
+offset_right = 115.0
+offset_bottom = 37.0
 theme_override_font_sizes/normal_font_size = 8
 text = "           Game has stoped"
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 3.35
+anchor_left = 3.175
 anchor_top = 2.05
 anchor_right = 4.85
-anchor_bottom = 2.5
-offset_right = 4.57764e-05
-offset_bottom = 3.05176e-05
+anchor_bottom = 2.397
+offset_top = -3.0
+offset_right = 2.0
+offset_bottom = 2.12
 grow_horizontal = 2
 grow_vertical = 2
 texture_hover = ExtResource("4_3g2xi")
@@ -90,4 +91,49 @@ grow_vertical = 2
 texture = ExtResource("5_ahatb")
 expand_mode = 1
 
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.35
+anchor_top = 2.05
+anchor_right = 4.85
+anchor_bottom = 2.5
+offset_left = -7.0
+offset_top = 20.0
+offset_right = 2.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_hover = ExtResource("4_3g2xi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.643
+offset_top = 1.0
+offset_bottom = -0.00400019
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_3bnw3")
+theme_override_font_sizes/normal_font_size = 12
+text = "             Quit"
+fit_content = true
+scroll_active = false
+
+[node name="TextureRect5" type="TextureRect" parent="TextureButton2"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.627
+offset_top = -1.0
+offset_bottom = -0.0059979
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ahatb")
+expand_mode = 1
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
