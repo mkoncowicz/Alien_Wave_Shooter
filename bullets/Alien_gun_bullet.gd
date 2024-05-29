@@ -23,5 +23,5 @@ func _on_Alien_shooter_bullet_body_entered(body):
 		hit_animation_instance.rotation_degrees = self.rotation_degrees
 		queue_free()
 		if body.has_method("player_take_damage"):
-			body.take_damage(30)
+			body.player_take_damage(30)
 		

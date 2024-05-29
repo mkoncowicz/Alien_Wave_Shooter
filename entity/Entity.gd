@@ -33,8 +33,6 @@ func move():
 
 func take_damage(damage: int):
 	self.hp -= 30
-	if self.hp <= 0:
-		queue_free()
 
 func set_hp(value):
 	hp = value

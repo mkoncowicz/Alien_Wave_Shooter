@@ -11,39 +11,45 @@ var is_alive : bool = true
 @onready var Shotgun_muzzle2 = $Shotgun/Shotgun_muzzle2
 @onready var Shotgun_muzzle3 = $Shotgun/Shotgun_muzzle3
 @onready var fire_speed = $Fire_speed
+@onready var immortal_frame = $immframe
 @onready var fire_animation = $Fire_animation
 @onready var flash_position = $Pistol/Pistol_flash
 @onready var weapon_change_speed = 0.09
 
 func _process(delta: float):
-	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
-	fire_animation.global_position = flash_position.global_position
-	if is_alive:
-		if mouse_direction.x > 0 and animated_sprite.flip_h:
-			animated_sprite.flip_h = false
-		elif mouse_direction.x < 0 and not animated_sprite.flip_h:
-			animated_sprite.flip_h = true
-			
-		if move_direction != Vector2.ZERO:
-			animated_sprite.play("run")
-		else:
-			animated_sprite.play("idle") 
-		$Pistol.look_at(get_global_mouse_position())
-		$Machinegun.look_at(get_global_mouse_position())
-		$Shotgun.look_at(get_global_mouse_position())
-		$Railgun.look_at(get_global_mouse_position())
-		weapon.look_at(get_global_mouse_position())
-		if get_global_mouse_position().x < position.x:
-			weapon.flip_v = true
-		else:
-			weapon.flip_v = false
-			
-		handle_camera()
-		get_input()
-		weaponManager()
+	$Camera2D/GUI/GUI/TextureRect/ProgressBar.update()
+	if !Globals.player_is_dead == true:
+		Globals.player_health = hp
+		var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+		fire_animation.global_position = flash_position.global_position
+		if is_alive:
+			if mouse_direction.x > 0 and animated_sprite.flip_h:
+				animated_sprite.flip_h = false
+			elif mouse_direction.x < 0 and not animated_sprite.flip_h:
+				animated_sprite.flip_h = true
+				
+			if move_direction != Vector2.ZERO:
+				if immortal_frame.is_stopped():
+					animated_sprite.play("run")
+			else:
+				if immortal_frame.is_stopped():
+					animated_sprite.play("idle") 
+			$Pistol.look_at(get_global_mouse_position())
+			$Machinegun.look_at(get_global_mouse_position())
+			$Shotgun.look_at(get_global_mouse_position())
+			$Railgun.look_at(get_global_mouse_position())
+			weapon.look_at(get_global_mouse_position())
+			if get_global_mouse_position().x < position.x:
+				weapon.flip_v = true
+			else:
+				weapon.flip_v = false
+				
+			handle_camera()
+			get_input()
+			weaponManager()
 		
 func get_input():
-	if is_alive:
+	if !Globals.player_is_dead == true:
 		move_direction = Vector2.ZERO
 		if Input.is_action_pressed("ui_down"):
 			move_direction += Vector2.DOWN
@@ -129,14 +135,23 @@ func handle_camera():
 	$Camera2D.global_position = new_camera_position
 
 func player_take_damage(damage: int):
-	self.hp -= 30
-	if self.hp <= 0:
-		queue_free()
+	if immortal_frame.is_stopped():
+		immortal_frame.start()
+
+		self.hp -= 30
+		animated_sprite.play("hit")
+		if self.hp <= 0:
+			hp = 0
+
+			Globals.player_health = hp
+			Globals.player_is_dead = true
+			animated_sprite.play("die")
+			move_direction = Vector2.ZERO
 
 func heal(value):
 	hp += value
 	hp = clamp(hp, 0, hp_max)
-	emit_signal("hp_changed", hp * 100/hp_max)
+
 
 func weaponManager():
 	if weapon == $Pistol:

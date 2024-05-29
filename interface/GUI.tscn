@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkyrf2tjtbnpp"]
+[gd_scene load_steps=9 format=3 uid="uid://bkyrf2tjtbnpp"]
 
 [ext_resource type="Script" path="res://interface/GUI.gd" id="1_bxcld"]
 [ext_resource type="Texture2D" uid="uid://ysotur31yyv2" path="res://Assets/health_bar.png" id="1_lfcgf"]
 [ext_resource type="Texture2D" uid="uid://d0qcoyj7mxr0k" path="res://Assets/slot.png" id="2_0ctt6"]
+[ext_resource type="Texture2D" uid="uid://5si5rcu1t1dv" path="res://Assets/health_bar_progress.png" id="3_68uqs"]
 [ext_resource type="Texture2D" uid="uid://b3loev7urvxel" path="res://Assets/pause.png" id="3_enlfb"]
+[ext_resource type="Script" path="res://interface/ProgressBar.gd" id="3_swkh0"]
 [ext_resource type="Texture2D" uid="uid://da0ua01vjmigu" path="res://Assets/pause hoover.png" id="4_5obas"]
 [ext_resource type="PackedScene" uid="uid://v006i7etheg6" path="res://interface/Pause.tscn" id="5_c54d5"]
 
@@ -24,7 +26,6 @@ offset_top = 165.0
 offset_right = 355.0
 offset_bottom = 185.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_lfcgf")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="GUI/TextureRect"]
@@ -49,7 +50,7 @@ theme_override_colors/font_color = Color(0.0156863, 0.803922, 0.513726, 1)
 theme_override_font_sizes/font_size = 12
 text = "SCORE:"
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI/TextureRect"]
+[node name="ProgressBar" type="TextureProgressBar" parent="GUI/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +62,10 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-show_percentage = false
+value = 100.0
+texture_under = ExtResource("1_lfcgf")
+texture_progress = ExtResource("3_68uqs")
+script = ExtResource("3_swkh0")
 
 [node name="TextureRect5" type="TextureRect" parent="GUI"]
 offset_left = 7.0

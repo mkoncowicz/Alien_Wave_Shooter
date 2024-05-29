@@ -1,7 +1,7 @@
 extends Node
 
-
-
+var player_is_dead : bool
+var player_health : int
 var machinegun_ammo_mag : int  #max 24
 var shotgun_ammo_mag : int     #max 12
 var railgun_ammo_mag : int     #max 1

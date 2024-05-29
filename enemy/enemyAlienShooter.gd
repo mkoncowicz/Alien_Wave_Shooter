@@ -84,7 +84,7 @@ func play_hit_animation():
 
 func _on_hitbox_body_entered(body):
 	if body.has_method("player_take_damage"):
-		body.take_damage(30)
+		body.player_take_damage(30)
 
 func _on_detection_area_body_entered(body):
 	if body.name == "Player":

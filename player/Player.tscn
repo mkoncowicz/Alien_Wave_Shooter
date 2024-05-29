@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bibw8h6hfvg0t"]
+[gd_scene load_steps=41 format=3 uid="uid://bibw8h6hfvg0t"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_0juml"]
 [ext_resource type="Texture2D" uid="uid://mhofwy7wx3y6" path="res://Assets/player.png" id="2_vgfvy"]
@@ -12,6 +12,26 @@
 [ext_resource type="Script" path="res://player/Fire_animation.gd" id="8_p4g2r"]
 [ext_resource type="Texture2D" uid="uid://b24cwbgnn6pef" path="res://Assets/Railgun_fire.png" id="9_vqtp2"]
 [ext_resource type="Texture2D" uid="uid://cvujci2no8g7i" path="res://Assets/Shotgun_fire.png" id="10_qtjh5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sial"]
+atlas = ExtResource("2_vgfvy")
+region = Rect2(0, 75, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dvnl"]
+atlas = ExtResource("2_vgfvy")
+region = Rect2(25, 75, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpkhk"]
+atlas = ExtResource("2_vgfvy")
+region = Rect2(50, 75, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms3lg"]
+atlas = ExtResource("2_vgfvy")
+region = Rect2(0, 50, 25, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vbt8"]
+atlas = ExtResource("2_vgfvy")
+region = Rect2(25, 50, 25, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j5e8t"]
 atlas = ExtResource("2_vgfvy")
@@ -55,6 +75,31 @@ region = Rect2(125, 25, 25, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_me65e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sial")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dvnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpkhk")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms3lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vbt8")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j5e8t")
@@ -192,11 +237,11 @@ fill_from = Vector2(0.5, 0.5)
 top_level = true
 collision_layer = 3
 script = ExtResource("1_0juml")
-hp = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_me65e")
-animation = &"idle"
+animation = &"hit"
+frame_progress = 0.210494
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -287,3 +332,7 @@ shadow_color = Color(0, 0, 0, 1)
 shadow_filter_smooth = 50.0
 texture = SubResource("GradientTexture2D_rn52b")
 texture_scale = 0.4
+
+[node name="immframe" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
