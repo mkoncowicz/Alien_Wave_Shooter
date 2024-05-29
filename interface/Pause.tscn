@@ -8,61 +8,66 @@
 [ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="5_ahatb"]
 
 [node name="Pause" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_l5sar")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 8.014
-anchor_bottom = 4.486
-offset_right = -0.559998
-offset_bottom = 4.56
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_cfgo3")
 expand_mode = 3
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 2.45
 anchor_top = 1.0
 anchor_right = 5.6
 anchor_bottom = 3.075
-offset_bottom = 19.0
+offset_left = -684.0
+offset_top = -159.0
+offset_right = -1570.0
+offset_bottom = -400.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_34olf")
 expand_mode = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect2"]
 layout_mode = 1
-offset_left = 7.0
-offset_top = 18.0
+offset_left = 6.99998
+offset_top = 26.0
 offset_right = 115.0
-offset_bottom = 37.0
+offset_bottom = 45.0
 theme_override_font_sizes/normal_font_size = 8
 text = "           Game has stoped"
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 1
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 3.175
 anchor_top = 2.05
 anchor_right = 4.85
 anchor_bottom = 2.397
-offset_top = -3.0
-offset_right = 2.0
-offset_bottom = 2.12
+offset_left = -888.0
+offset_top = -294.0
+offset_right = -1355.0
+offset_bottom = -337.46
 grow_horizontal = 2
 grow_vertical = 2
 texture_hover = ExtResource("4_3g2xi")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureButton"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -78,7 +83,7 @@ text = "          Resume"
 fit_content = true
 scroll_active = false
 
-[node name="TextureRect5" type="TextureRect" parent="TextureButton"]
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/TextureButton"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -91,29 +96,28 @@ grow_vertical = 2
 texture = ExtResource("5_ahatb")
 expand_mode = 1
 
-[node name="TextureButton2" type="TextureButton" parent="."]
-layout_mode = 1
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 3.35
 anchor_top = 2.05
 anchor_right = 4.85
 anchor_bottom = 2.5
-offset_left = -7.0
-offset_top = 20.0
-offset_right = 2.0
-offset_bottom = 30.0
+offset_left = -944.0
+offset_top = -271.0
+offset_right = -1355.0
+offset_bottom = -333.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_hover = ExtResource("4_3g2xi")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureButton2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureButton2"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.643
-offset_top = 1.0
-offset_bottom = -0.00400019
+offset_top = 3.1065
+offset_bottom = 5.8895
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("4_3bnw3")
@@ -122,18 +126,16 @@ text = "             Quit"
 fit_content = true
 scroll_active = false
 
-[node name="TextureRect5" type="TextureRect" parent="TextureButton2"]
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/TextureButton2"]
 show_behind_parent = true
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.627
-offset_top = -1.0
-offset_bottom = -0.0059979
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_ahatb")
 expand_mode = 1
 
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
-[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

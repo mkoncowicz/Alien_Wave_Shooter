@@ -1,6 +1,5 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,11 +9,16 @@ func _process(delta):
 	pass
 
 func _on_texture_button_pressed():
-	get_tree().change_scene_to_file("res://map/Map.tscn")
-	print("ok")
-	pass # Replace with function body.
-
+	unpause()
 
 func _on_texture_button_2_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
+
+func unpause():
+	$CanvasLayer.hide()
+	$"../GUI".show()
+	get_tree().paused = false
+	
+func pause():
+	get_tree().paused = true
+	$CanvasLayer.show()
