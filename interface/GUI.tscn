@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkyrf2tjtbnpp"]
+[gd_scene load_steps=7 format=3 uid="uid://bkyrf2tjtbnpp"]
 
 [ext_resource type="Script" path="res://interface/GUI.gd" id="1_bxcld"]
 [ext_resource type="Texture2D" uid="uid://ysotur31yyv2" path="res://Assets/health_bar.png" id="1_lfcgf"]
 [ext_resource type="Texture2D" uid="uid://d0qcoyj7mxr0k" path="res://Assets/slot.png" id="2_0ctt6"]
 [ext_resource type="Texture2D" uid="uid://b3loev7urvxel" path="res://Assets/pause.png" id="3_enlfb"]
+[ext_resource type="Texture2D" uid="uid://da0ua01vjmigu" path="res://Assets/pause hoover.png" id="4_5obas"]
 [ext_resource type="PackedScene" uid="uid://v006i7etheg6" path="res://interface/Pause.tscn" id="5_c54d5"]
 
 [node name="GUI" type="Control"]
@@ -99,25 +100,15 @@ texture = ExtResource("2_0ctt6")
 expand_mode = 1
 
 [node name="TextureButton" type="TextureButton" parent="GUI"]
-offset_left = 305.0
-offset_top = 6.0
+offset_left = 298.0
+offset_top = 5.0
 offset_right = 326.0
-offset_bottom = 27.0
+offset_bottom = 31.0
 scale = Vector2(0.5, 0.5)
-
-[node name="TextureRect2" type="TextureRect" parent="GUI/TextureButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 19.0
-offset_bottom = 19.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_enlfb")
-expand_mode = 1
+texture_normal = ExtResource("3_enlfb")
+texture_hover = ExtResource("4_5obas")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Pause" parent="." instance=ExtResource("5_c54d5")]
 
