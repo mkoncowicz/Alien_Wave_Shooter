@@ -179,9 +179,7 @@ script = ExtResource("1_iqoav")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kgx22")
-animation = &"hit"
-frame = 2
-frame_progress = 0.865258
+animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

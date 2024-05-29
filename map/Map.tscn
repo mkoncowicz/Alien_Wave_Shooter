@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=29 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyot1bhutshr3" path="res://torch/torch.tscn" id="9_wjj4n"]
 [ext_resource type="PackedScene" uid="uid://dny0n80v6eq6n" path="res://pickups/AidKit.tscn" id="10_6hwa6"]
 [ext_resource type="PackedScene" uid="uid://cunffhudhib7r" path="res://spaceship/spaceship.tscn" id="13_olb0b"]
+[ext_resource type="PackedScene" uid="uid://d1mhnd510d1jh" path="res://enemy/enemyAlienShooter.tscn" id="15_yjvhv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32of"]
 texture = ExtResource("2_kodua")
@@ -6671,7 +6672,6 @@ position = Vector2(1104, 704)
 position = Vector2(1254, 124)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(-3, -18)
 navigation_polygon = SubResource("NavigationPolygon_s28q1")
 
@@ -6703,7 +6703,7 @@ position = Vector2(458, 697)
 position = Vector2(388, 641)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.129412, 0.145098, 0.145098, 0.996078)
+color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="torches" type="Node2D" parent="."]
 top_level = true
@@ -6746,3 +6746,6 @@ position = Vector2(418, 382)
 [node name="Spaceship" parent="." instance=ExtResource("13_olb0b")]
 position = Vector2(53, 128)
 collision_layer = 3
+
+[node name="EnemyAlienShooter" parent="." instance=ExtResource("15_yjvhv")]
+position = Vector2(691, 229)

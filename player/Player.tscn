@@ -196,7 +196,7 @@ hp = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_me65e")
-animation = &"run"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -280,7 +280,7 @@ one_shot = true
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, 2)
 scale = Vector2(3, 3)
-energy = 0.8
+energy = 0.5
 range_layer_max = 4
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)

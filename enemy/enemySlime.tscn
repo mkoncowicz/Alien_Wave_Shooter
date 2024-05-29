@@ -176,10 +176,6 @@ visible = false
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_l287r")
 
-[node name="PathTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

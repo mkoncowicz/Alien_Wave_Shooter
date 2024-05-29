@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfkaph2as2ifx"]
+
+[ext_resource type="Script" path="res://bullets/Alien_gun_bullet.gd" id="1_agxpw"]
+[ext_resource type="Texture2D" uid="uid://6333umysrajv" path="res://Assets/alien_gun_bullet.png" id="2_3ssn8"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="3_0ubi0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ox1py"]
+radius = 3.0
+height = 8.0
+
+[node name="AlienGunBullet" type="Area2D"]
+script = ExtResource("1_agxpw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ssn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_ox1py")
+
+[node name="Hit_point" type="Node2D" parent="."]
+position = Vector2(4, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.029, 0.019)
+color = Color(0.45098, 0.847059, 0.00392157, 1)
+energy = 2.0
+texture = ExtResource("3_0ubi0")
+
+[connection signal="body_entered" from="." to="." method="_on_Alien_shooter_bullet_body_entered"]

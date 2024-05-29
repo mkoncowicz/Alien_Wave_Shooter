@@ -1,11 +1,24 @@
-[gd_scene load_steps=20 format=3 uid="uid://03f33d4go12w"]
+[gd_scene load_steps=24 format=3 uid="uid://03f33d4go12w"]
 
 [ext_resource type="Texture2D" uid="uid://qidyb82yk11k" path="res://Assets/Machinegun_bullet destroy.png" id="1_a08ey"]
+[ext_resource type="Texture2D" uid="uid://c8220bh4rup12" path="res://Assets/alien_gun_bullet_destroy.png" id="1_c7ox7"]
 [ext_resource type="Texture2D" uid="uid://bj5cvi0vo7y4l" path="res://Assets/Pistol_bullet destroy.png" id="1_c66s4"]
-[ext_resource type="Script" path="res://Bullet_hit_animation.gd" id="2_qoi5p"]
+[ext_resource type="Script" path="res://bullets/Bullet_hit_animation.gd" id="2_qoi5p"]
 [ext_resource type="Texture2D" uid="uid://c4kgf2gar808h" path="res://Assets/Railgun_bullet destroy.png" id="3_nwinn"]
 [ext_resource type="Texture2D" uid="uid://br71dqn5kv5k0" path="res://Assets/Shotgun_bullet destroy.png" id="4_u61mv"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="6_0p2bt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbg16"]
+atlas = ExtResource("1_c7ox7")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o41xe"]
+atlas = ExtResource("1_c7ox7")
+region = Rect2(11, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyior"]
+atlas = ExtResource("1_c7ox7")
+region = Rect2(22, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vwo6"]
 atlas = ExtResource("1_a08ey")
@@ -57,6 +70,20 @@ region = Rect2(22, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pnlea"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbg16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o41xe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyior")
+}],
+"loop": false,
+"name": &"Alien_gun",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6vwo6")
@@ -116,7 +143,7 @@ animations = [{
 
 [node name="Bullet_hit_animation" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_pnlea")
-animation = &"Pistol"
+animation = &"Alien_gun"
 speed_scale = 1.5
 script = ExtResource("2_qoi5p")
 

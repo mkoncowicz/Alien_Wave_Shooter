@@ -14,7 +14,9 @@ func _ready():
 	if weapon_type == "railgun":
 		$PointLight2D.set_color(Color(0, 1, 1, 1))
 		play("Railgun")
-
+	if weapon_type == "alien_gun":
+		$PointLight2D.set_color(Color(0.451, 0.847, 0.004, 1))
+		play("Alien_gun")
 	
 func _on_animation_finished():
 	queue_free()
