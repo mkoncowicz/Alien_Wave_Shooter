@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cunffhudhib7r"]
+[gd_scene load_steps=6 format=3 uid="uid://cunffhudhib7r"]
 
 [ext_resource type="Texture2D" uid="uid://dg1a0yq0uc1yy" path="res://Assets/shipmark.png" id="1_pkkqg"]
 [ext_resource type="Texture2D" uid="uid://d1bdwvvuone17" path="res://Assets/spaceship.png" id="1_rij8y"]
@@ -6,15 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c4gcmdf8etvd8" path="res://Assets/torch_texture.png" id="3_217ly"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="4_eagbn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t731r"]
-radius = 81.0062
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qnw5o"]
-radius = 79.0063
-
 [node name="Spaceship" type="StaticBody2D"]
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+show_behind_parent = true
 position = Vector2(-36, -16)
 rotation = 0.272687
 scale = Vector2(0.987805, 1)
@@ -58,12 +53,10 @@ scale = Vector2(0.342773, 0.46875)
 energy = 1.5
 texture = ExtResource("4_eagbn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-23, -7)
-shape = SubResource("CircleShape2D_t731r")
-
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-21, -7)
-shape = SubResource("CircleShape2D_qnw5o")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(52, 17, 50, 22, 43, 22, 37, 21, 31, 19, 28, 20, 25, 21, 21, 20, 19, 23, 22, 32, 30, 36, 19, 46, 9, 44, -26, 61, -39, 67, -55, 61, -54, 56, -46, 57, -23, 35, -23, 31, -34, 25, -20, 0, -55, -16, -49, -24, -11, -12, -6, -16, -14, -22, -13, -29, -3, -26, -12, -34, -10, -42, 3, -39, -1, -74, -5, -78, -4, -81, 15, -75, 35, -27, 45, -23, 45, -9, 35, -11, 30, -2, 34, 2, 34, 4, 48, 11)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(52, 17, 50, 22, 43, 22, 37, 21, 31, 19, 28, 20, 25, 21, 21, 20, 19, 23, 22, 32, 30, 36, 19, 46, 9, 44, -26, 61, -39, 67, -55, 61, -54, 56, -46, 57, -23, 35, -23, 31, -34, 25, -20, 0, -55, -16, -49, -24, -11, -12, -6, -16, -14, -22, -13, -29, -3, -26, -12, -34, -10, -42, 3, -39, -1, -74, -5, -78, -4, -81, 15, -75, 35, -27, 45, -23, 45, -9, 35, -11, 30, -2, 34, 2, 34, 4, 48, 11)
