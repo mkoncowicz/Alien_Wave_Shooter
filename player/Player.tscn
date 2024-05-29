@@ -280,6 +280,7 @@ position = Vector2(14, 0)
 position = Vector2(12, 0)
 
 [node name="Railgun" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(1, 7)
 texture = ExtResource("5_c53iw")
 offset = Vector2(3, 0)
@@ -291,7 +292,6 @@ position = Vector2(14, 0)
 position = Vector2(12, 0)
 
 [node name="Shotgun" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, 6)
 texture = ExtResource("6_we4x1")
 offset = Vector2(3, 0)

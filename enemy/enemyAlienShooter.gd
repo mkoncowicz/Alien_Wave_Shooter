@@ -16,7 +16,7 @@ var target_location = Vector2.ZERO
 func _physics_process(delta):
 	if is_dead or is_hit:
 		return
-	#???
+	
 	fire_animation.global_position = flash_position.global_position
 	
 	weapon.look_at(nav_agent.target_position)

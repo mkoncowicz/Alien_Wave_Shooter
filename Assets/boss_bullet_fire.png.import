@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5f21ctgjn5t"
-path="res://.godot/imported/boss.png-cb6aad8feaafd8bb86a3f30b81509cd5.ctex"
+uid="uid://bpmwwnpsv3ayt"
+path="res://.godot/imported/boss_bullet_fire.png-68b19063a5e7a3cddb79da1c9e198715.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/boss.png"
-dest_files=["res://.godot/imported/boss.png-cb6aad8feaafd8bb86a3f30b81509cd5.ctex"]
+source_file="res://Assets/boss_bullet_fire.png"
+dest_files=["res://.godot/imported/boss_bullet_fire.png-68b19063a5e7a3cddb79da1c9e198715.ctex"]
 
 [params]
 

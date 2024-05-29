@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=30 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dny0n80v6eq6n" path="res://pickups/AidKit.tscn" id="10_6hwa6"]
 [ext_resource type="PackedScene" uid="uid://cunffhudhib7r" path="res://spaceship/spaceship.tscn" id="13_olb0b"]
 [ext_resource type="PackedScene" uid="uid://d1mhnd510d1jh" path="res://enemy/enemyAlienShooter.tscn" id="15_yjvhv"]
+[ext_resource type="PackedScene" uid="uid://bimpo780qylan" path="res://enemy/boss/boss.tscn" id="16_xelt5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32of"]
 texture = ExtResource("2_kodua")
@@ -6748,4 +6749,7 @@ position = Vector2(53, 128)
 collision_layer = 3
 
 [node name="EnemyAlienShooter" parent="." instance=ExtResource("15_yjvhv")]
-position = Vector2(691, 229)
+position = Vector2(1196, 567)
+
+[node name="Boss" parent="." instance=ExtResource("16_xelt5")]
+position = Vector2(571, 283)

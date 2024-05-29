@@ -1,0 +1,203 @@
+[gd_scene load_steps=26 format=3 uid="uid://bimpo780qylan"]
+
+[ext_resource type="Script" path="res://enemy/boss/boss.gd" id="1_jubec"]
+[ext_resource type="Texture2D" uid="uid://bh5f21ctgjn5t" path="res://Assets/boss.png" id="2_1fp8m"]
+[ext_resource type="Script" path="res://enemy/boss/Fire_animation_boss.gd" id="2_7rdfv"]
+[ext_resource type="Texture2D" uid="uid://bpmwwnpsv3ayt" path="res://Assets/boss_bullet_fire.png" id="3_4ucjk"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="5_nkywr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vq7y"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(0, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wlvf"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(60, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lcs6"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(120, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4fqv"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(180, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17am3"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(240, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apsq1"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(300, 180, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmwao"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(0, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn48d"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(60, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws4j7"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(120, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll7s0"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(180, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tath3"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(240, 60, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds3fv"]
+atlas = ExtResource("2_1fp8m")
+region = Rect2(300, 60, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvwow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vq7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wlvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcs6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4fqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17am3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apsq1")
+}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmwao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dn48d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws4j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll7s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tath3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds3fv")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_st611"]
+radius = 19.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qefg"]
+atlas = ExtResource("3_4ucjk")
+region = Rect2(0, 0, 11, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3knn0"]
+atlas = ExtResource("3_4ucjk")
+region = Rect2(11, 0, 11, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1iu3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qefg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3knn0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sheyr"]
+radius = 0.005
+height = 0.01
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywjqk"]
+radius = 20.0
+height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2a2k"]
+radius = 250.0
+
+[node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_jubec")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lvwow")
+animation = &"move"
+
+[node name="Flash" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(8, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_st611")
+
+[node name="Fire_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, -10)
+sprite_frames = SubResource("SpriteFrames_1iu3m")
+frame_progress = 0.34998
+script = ExtResource("2_7rdfv")
+
+[node name="Fire_speed" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.8
+texture = ExtResource("5_nkywr")
+texture_scale = 0.2
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(2, 3)
+shape = SubResource("CapsuleShape2D_sheyr")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 3)
+shape = SubResource("CapsuleShape2D_ywjqk")
+
+[node name="Detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
+shape = SubResource("CircleShape2D_w2a2k")
+
+[node name="Muzzle1" type="Node2D" parent="."]
+position = Vector2(8, -14)
+
+[node name="Muzzle2" type="Node2D" parent="."]
+position = Vector2(8, -14)
+
+[node name="Muzzle3" type="Node2D" parent="."]
+position = Vector2(8, -14)
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection_area" to="." method="_on_detection_area_body_exited"]
