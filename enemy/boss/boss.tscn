@@ -141,6 +141,8 @@ height = 46.0
 radius = 250.0
 
 [node name="Boss" type="CharacterBody2D" groups=["enemies"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_jubec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

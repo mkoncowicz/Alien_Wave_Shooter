@@ -22,8 +22,10 @@ func _physics_process(delta):
 	weapon.look_at(nav_agent.target_position)
 	if nav_agent.target_position.x < global_position.x:
 		weapon.flip_v = true
+		animated_sprite.flip_h = true
 	else:
 		weapon.flip_v = false
+		animated_sprite.flip_h = false
 	
 	if is_shooting:
 		animated_sprite.play("idle")
@@ -39,10 +41,6 @@ func _physics_process(delta):
 		velocity = new_velocity
 		move_and_slide()
 			
-		if nav_agent.target_position.x < global_position.x:
-			animated_sprite.flip_h = true
-		else:
-			animated_sprite.flip_h = false
 
 func update_target_location(target_location):
 	if is_dead or is_hit:
