@@ -1,0 +1,105 @@
+[gd_scene load_steps=13 format=3 uid="uid://b2obsta5ppnyr"]
+
+[ext_resource type="Texture2D" uid="uid://xp7m1ep46y3" path="res://Assets/pickup_railgun_bullet.png" id="1_dsxfy"]
+[ext_resource type="Script" path="res://pickups/Railgun_bullet.gd" id="1_r22bx"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="2_yt6u3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i701a"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(0, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll4bt"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(14, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp7ro"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(28, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfkvy"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(42, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkbo5"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(56, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh3b4"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(70, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5libv"]
+atlas = ExtResource("1_dsxfy")
+region = Rect2(84, 0, 12, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4l7gn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i701a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll4bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp7ro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfkvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkbo5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh3b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5libv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yeo1y"]
+size = Vector2(12, 10)
+
+[node name="RailgunBullet" type="Area2D"]
+script = ExtResource("1_r22bx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4l7gn")
+frame = 2
+frame_progress = 0.388346
+speed_scale = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yeo1y")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.1
+texture = ExtResource("2_yt6u3")
+texture_scale = 0.05
+
+[connection signal="body_entered" from="." to="." method="_on_Railgun_bullet_body_entered"]

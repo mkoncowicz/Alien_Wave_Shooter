@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3 uid="uid://ck7urmwwv06im"]
+
+[ext_resource type="Script" path="res://pickups/Machinegun_bullet.gd" id="1_6kv0b"]
+[ext_resource type="Texture2D" uid="uid://6mocu5fyf1q2" path="res://Assets/pickup_machingun_bullet.png" id="1_vpfmi"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="3_4ween"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jamt5"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(0, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hf4o5"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(14, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwuqg"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(28, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0a1"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(42, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvdtj"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(56, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kv16"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(70, 0, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_speqm"]
+atlas = ExtResource("1_vpfmi")
+region = Rect2(84, 0, 12, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvxpx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hf4o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwuqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l0a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvdtj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kv16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_speqm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p66uc"]
+size = Vector2(12, 10)
+
+[node name="MachinegunBullet" type="Area2D"]
+script = ExtResource("1_6kv0b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kvxpx")
+frame_progress = 0.7649
+speed_scale = 0.8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p66uc")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 1.1
+texture = ExtResource("3_4ween")
+texture_scale = 0.05
+
+[connection signal="body_entered" from="." to="." method="_on_Machinegun_bullet_body_entered"]

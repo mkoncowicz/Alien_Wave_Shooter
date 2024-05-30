@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgbaycxs534nm"]
+
+[ext_resource type="Texture2D" uid="uid://bjyqtgbx2lb42" path="res://Assets/Machinegun (copy).png" id="1_8dfmb"]
+[ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="2_t1mch"]
+[ext_resource type="Material" uid="uid://cau40gv7y1eue" path="res://pickups/gun_particle.tres" id="3_du10q"]
+[ext_resource type="Texture2D" uid="uid://ckl2tnlifk536" path="res://Assets/star_texture1.png" id="4_wney3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iixwh"]
+size = Vector2(19, 6)
+
+[node name="Machinegun" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8dfmb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iixwh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(1, 0.6)
+energy = 2.0
+texture = ExtResource("2_t1mch")
+texture_scale = 0.08
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 150
+process_material = ExtResource("3_du10q")
+texture = ExtResource("4_wney3")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
