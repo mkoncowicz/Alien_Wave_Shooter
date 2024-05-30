@@ -39,6 +39,27 @@ animations = [{
 "texture": SubResource("AtlasTexture_4e68x")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4e68x")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_48xvl")
 }, {
 "duration": 1.0,
@@ -69,6 +90,8 @@ script = ExtResource("1_lp3s7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ovy0h")
+frame_progress = 0.093885
+speed_scale = 0.8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4qgof")
