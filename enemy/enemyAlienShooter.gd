@@ -1,5 +1,6 @@
 extends Entity
-
+@onready var map = find_parent("Map")
+@onready var gui = map.find_child("Player").find_child("GUI")
 @export var bullet: PackedScene = preload("res://bullets/Alien_gun_bullet.tscn")
 @onready var nav_agent = $NavigationAgent2D
 @onready var detection_area = $DetectionArea2D
@@ -58,7 +59,7 @@ func take_damage(damage: int):
 func die():
 	if is_dead:
 		return
-	
+	update_score()
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 
@@ -100,3 +101,6 @@ func shoot():
 	fire_animation.add_fire_animation("alien_gun")
 	fire_speed.start()
 	
+func update_score():
+	Globals.score += 100
+	gui.update_score()

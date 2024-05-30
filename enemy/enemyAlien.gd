@@ -1,5 +1,6 @@
 extends Entity
-
+@onready var map = find_parent("Map")
+@onready var gui = map.find_child("Player").find_child("GUI")
 @onready var nav_agent = $NavigationAgent2D
 var is_dead = false
 var is_hit = false
@@ -41,7 +42,7 @@ func take_damage(damage: int):
 func die():
 	if is_dead:
 		return
-	
+	update_score()
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 
@@ -62,3 +63,7 @@ func play_hit_animation():
 	$CollisionShape2D.set_deferred("disabled", false) 
 	$Hurtbox/CollisionShape2D.set_deferred("disabled", false) 
 	$Hitbox/CollisionShape2D.set_deferred("disabled", false) 
+
+func update_score():
+	Globals.score += 75
+	gui.update_score()

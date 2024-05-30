@@ -6,6 +6,8 @@ var is_alive : bool = true
 @export var Machinegun_bullet: PackedScene = preload("res://bullets/Machinegun_bullet.tscn")
 @export var Shotgun_bullet: PackedScene = preload("res://bullets/Shotgun_bullet.tscn")
 @export var Railgun_bullet: PackedScene = preload("res://bullets/Railgun_bullet.tscn")
+@onready var ammo_system = $Ammo_system
+@onready var reload_timer = $Ammo_system/Reload_timer
 @onready var foot_step = $Foot_step
 @onready var blood = $Blood
 @onready var weapon = $Pistol
@@ -65,31 +67,32 @@ func get_input():
 		if Input.is_action_pressed("ui_right"):
 			move_direction += Vector2.RIGHT
 			
-		if Input.is_action_pressed("fire") and fire_speed.is_stopped():
+		if Input.is_action_pressed("fire") and fire_speed.is_stopped() and reload_timer.is_stopped():
 			shoot()
-			
-		if Input.is_action_pressed("weapon_pistol"):
+		
+		if Input.is_action_pressed("weapon_pistol") and reload_timer.is_stopped():
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Pistol
 			muzzle = $Pistol/Pistol_muzzle
 			flash_position = $Pistol/Pistol_flash
-		if Input.is_action_pressed("weapon_machinegun"):
+		if Input.is_action_pressed("weapon_machinegun") and reload_timer.is_stopped():
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Machinegun
 			muzzle = $Machinegun/Machinegun_muzzle
 			flash_position = $Machinegun/Machinegun_flash
-		if Input.is_action_pressed("weapon_shotgun"):
+		if Input.is_action_pressed("weapon_shotgun") and reload_timer.is_stopped():
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Shotgun
 			muzzle = $Shotgun/Shotgun_muzzle
 			flash_position = $Shotgun/Shotgun_flash
-		if Input.is_action_pressed("weapon_railgun"):
+		if Input.is_action_pressed("weapon_railgun") and reload_timer.is_stopped():
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Railgun
 			muzzle = $Railgun/Railgun_muzzle
 			flash_position = $Railgun/Railgun_flash
 
 func shoot():
+	
 	if weapon == $Pistol:
 		var bullet_instance = bullet.instantiate()
 		get_tree().current_scene.add_child(bullet_instance)
@@ -99,45 +102,53 @@ func shoot():
 		fire_speed.start()
 		$Pistol/Pistol_sound.play()
 	if weapon == $Machinegun:
-		var bullet_instance = Machinegun_bullet.instantiate()
-		get_tree().current_scene.add_child(bullet_instance)
-		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.rotation_degrees = weapon.rotation_degrees
-		fire_animation.add_fire_animation("machinegun")
-		Globals.machinegun_ammo_mag -= 1
-		print(Globals.machinegun_ammo_mag)
-		fire_speed.start()
-		$Machinegun/Machingun_sound.play()
+		if Globals.machinegun_ammo_mag == 0:
+			ammo_system.reload("machinegun")
+			print("no ammmo") 
+		else:
+			ammo_system.update("machinegun")
+			var bullet_instance = Machinegun_bullet.instantiate()
+			get_tree().current_scene.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation_degrees = weapon.rotation_degrees
+			fire_animation.add_fire_animation("machinegun")
+			fire_speed.start()
+			$Machinegun/Machingun_sound.play()
 	if weapon == $Shotgun:
-		var bullet_instance = Shotgun_bullet.instantiate()
-		get_tree().current_scene.add_child(bullet_instance)
-		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.rotation_degrees = weapon.rotation_degrees
-		
-		var bullet_instance2 = Shotgun_bullet.instantiate()
-		get_tree().current_scene.add_child(bullet_instance2)
-		bullet_instance2.global_position = Shotgun_muzzle2.global_position
-		bullet_instance2.rotation_degrees = weapon.rotation_degrees - 8
-		
-		var bullet_instance3 = Shotgun_bullet.instantiate()
-		get_tree().current_scene.add_child(bullet_instance3)
-		bullet_instance3.global_position = Shotgun_muzzle3.global_position
-		bullet_instance3.rotation_degrees = weapon.rotation_degrees + 8
-		fire_animation.add_fire_animation("shotgun")
-		Globals.shotgun_ammo_mag -= 3
-		print(Globals.shotgun_ammo_mag)
-		fire_speed.start()
-		$Shotgun/Shotgun_sound.play()
+		if Globals.shotgun_ammo_mag == 0:
+			ammo_system.reload("shotgun")
+			print("no ammmo") 
+		else:
+			ammo_system.update("shotgun")
+			var bullet_instance = Shotgun_bullet.instantiate()
+			get_tree().current_scene.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation_degrees = weapon.rotation_degrees
+			
+			var bullet_instance2 = Shotgun_bullet.instantiate()
+			get_tree().current_scene.add_child(bullet_instance2)
+			bullet_instance2.global_position = Shotgun_muzzle2.global_position
+			bullet_instance2.rotation_degrees = weapon.rotation_degrees - 8
+			
+			var bullet_instance3 = Shotgun_bullet.instantiate()
+			get_tree().current_scene.add_child(bullet_instance3)
+			bullet_instance3.global_position = Shotgun_muzzle3.global_position
+			bullet_instance3.rotation_degrees = weapon.rotation_degrees + 8
+			fire_animation.add_fire_animation("shotgun")
+			fire_speed.start()
+			$Shotgun/Shotgun_sound.play()
 	if weapon == $Railgun:
-		var bullet_instance = Railgun_bullet.instantiate()
-		get_tree().current_scene.add_child(bullet_instance)
-		bullet_instance.global_position = muzzle.global_position
-		bullet_instance.rotation_degrees = weapon.rotation_degrees
-		fire_animation.add_fire_animation("railgun")
-		Globals.railgun_ammo_mag -= 1
-		print(Globals.railgun_ammo_mag)
-		fire_speed.start()
-		$Railgun/Railgun_sound.play()
+		if Globals.railgun_ammo_mag == 0:
+			ammo_system.reload("railgun")
+		else:
+			ammo_system.update("railgun")
+			var bullet_instance = Railgun_bullet.instantiate()
+			get_tree().current_scene.add_child(bullet_instance)
+			bullet_instance.global_position = muzzle.global_position
+			bullet_instance.rotation_degrees = weapon.rotation_degrees
+			fire_animation.add_fire_animation("railgun")
+			fire_speed.start()
+			$Railgun/Railgun_sound.play()
 
 func handle_camera():
 	var new_camera_position = global_position + (get_global_mouse_position() - global_position) * SMOOTH
@@ -168,23 +179,35 @@ func heal(value):
 
 func weaponManager():
 	if weapon == $Pistol:
+		$Camera2D/GUI.update_ammo("pistol")
 		$Pistol.set_visible(true)
 		$Machinegun.set_visible(false)
 		$Shotgun.set_visible(false)
 		$Railgun.set_visible(false)
+	if Input.is_action_pressed("reload") and fire_speed.is_stopped() and reload_timer.is_stopped():
+		ammo_system.reload("pistol")
 	if weapon == $Machinegun:
+		$Camera2D/GUI.update_ammo("machinegun")
 		$Pistol.set_visible(false)
 		$Machinegun.set_visible(true)
 		$Shotgun.set_visible(false)
 		$Railgun.set_visible(false)
+	if Input.is_action_pressed("reload") and fire_speed.is_stopped() and reload_timer.is_stopped():
+		ammo_system.reload("machinegun")
 	if weapon == $Shotgun:
+		$Camera2D/GUI.update_ammo("shotgun")
 		$Pistol.set_visible(false)
 		$Machinegun.set_visible(false)
 		$Shotgun.set_visible(true)
 		$Railgun.set_visible(false)
+	if Input.is_action_pressed("reload") and fire_speed.is_stopped() and reload_timer.is_stopped():
+		ammo_system.reload("shotgun")
 	if weapon == $Railgun:
+		$Camera2D/GUI.update_ammo("railgun")
 		$Pistol.set_visible(false)
 		$Machinegun.set_visible(false)
 		$Shotgun.set_visible(false)
 		$Railgun.set_visible(true)
+	if Input.is_action_pressed("reload") and fire_speed.is_stopped() and reload_timer.is_stopped():
+		ammo_system.reload("railgun")
 

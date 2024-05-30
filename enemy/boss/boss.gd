@@ -1,5 +1,6 @@
 extends Entity
-
+@onready var map = find_parent("Map")
+@onready var gui = map.find_child("Player").find_child("GUI")
 @export var bullet: PackedScene = preload("res://bullets/Boss_bullet.tscn")
 @onready var nav_agent = $NavigationAgent2D
 @onready var detection_area = $DetectionArea2D
@@ -61,7 +62,7 @@ func take_damage(damage: int):
 func die():
 	if is_dead:
 		return
-	
+	update_score()
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 
@@ -99,6 +100,8 @@ func shoot():
 	bullet_instance3.global_position = muzzle3.global_position
 	bullet_instance3.rotation_degrees = muzzle1.rotation_degrees + 8
 	fire_animation.add_fire_animation("boss_gun")
-	Globals.shotgun_ammo_mag -= 3
-	print(Globals.shotgun_ammo_mag)
 	fire_speed.start()
+
+func update_score():
+	Globals.score += 999999
+	gui.update_score()
