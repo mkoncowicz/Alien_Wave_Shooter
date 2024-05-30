@@ -149,6 +149,8 @@ radius = 10.5
 load_path = "res://Assets/light.png-110d8c24aabb8f52a1bad1d10ea54b0b.ctex"
 
 [node name="EnemySlime" type="CharacterBody2D" groups=["enemies"]]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_n53ob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
