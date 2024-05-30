@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dny0n80v6eq6n"]
+[gd_scene load_steps=14 format=3 uid="uid://dny0n80v6eq6n"]
 
 [ext_resource type="Script" path="res://pickups/AidKit.gd" id="1_lp3s7"]
 [ext_resource type="Texture2D" uid="uid://bn1rcwkauid11" path="res://Assets/aidKit.png" id="2_cit4h"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="3_ak6no"]
+[ext_resource type="AudioStream" uid="uid://dwecle1rnehgg" path="res://Assets/pickup_ammo_aid.mp3" id="4_en71e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4e68x"]
 atlas = ExtResource("2_cit4h")
@@ -92,6 +93,10 @@ script = ExtResource("1_lp3s7")
 sprite_frames = SubResource("SpriteFrames_ovy0h")
 frame_progress = 0.093885
 speed_scale = 0.8
+
+[node name="Pickup_aid" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+stream = ExtResource("4_en71e")
+volume_db = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4qgof")

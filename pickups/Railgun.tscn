@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://badxgctb7caav"]
+[gd_scene load_steps=8 format=3 uid="uid://badxgctb7caav"]
 
+[ext_resource type="Script" path="res://pickups/Railgun.gd" id="1_2egis"]
 [ext_resource type="Texture2D" uid="uid://8uv063llckhh" path="res://Assets/Railgun (copy).png" id="1_w4mf4"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="2_g20do"]
+[ext_resource type="AudioStream" uid="uid://dmmpb7bhsuk55" path="res://Assets/pickup_gun.mp3" id="3_0kvie"]
 [ext_resource type="Texture2D" uid="uid://ckl2tnlifk536" path="res://Assets/star_texture1.png" id="3_1bga4"]
 [ext_resource type="Material" uid="uid://cau40gv7y1eue" path="res://pickups/gun_particle.tres" id="3_051mb"]
 
@@ -9,9 +11,14 @@
 size = Vector2(19, 6)
 
 [node name="Railgun" type="Area2D"]
+script = ExtResource("1_2egis")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_w4mf4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sprite2D"]
+stream = ExtResource("3_0kvie")
+volume_db = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f6wwx")
@@ -30,3 +37,5 @@ texture = ExtResource("3_1bga4")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_Railgun_body_entered"]

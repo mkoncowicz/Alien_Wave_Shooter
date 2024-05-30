@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ck7urmwwv06im"]
+[gd_scene load_steps=14 format=3 uid="uid://ck7urmwwv06im"]
 
 [ext_resource type="Script" path="res://pickups/Machinegun_bullet.gd" id="1_6kv0b"]
 [ext_resource type="Texture2D" uid="uid://6mocu5fyf1q2" path="res://Assets/pickup_machingun_bullet.png" id="1_vpfmi"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="3_4ween"]
+[ext_resource type="AudioStream" uid="uid://dwecle1rnehgg" path="res://Assets/pickup_ammo_aid.mp3" id="3_wj83i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jamt5"]
 atlas = ExtResource("1_vpfmi")
@@ -92,6 +93,10 @@ script = ExtResource("1_6kv0b")
 sprite_frames = SubResource("SpriteFrames_kvxpx")
 frame_progress = 0.7649
 speed_scale = 0.8
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatedSprite2D"]
+stream = ExtResource("3_wj83i")
+volume_db = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p66uc")
