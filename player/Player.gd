@@ -97,6 +97,7 @@ func shoot():
 		bullet_instance.rotation_degrees = weapon.rotation_degrees
 		fire_animation.add_fire_animation("pistol")
 		fire_speed.start()
+		$Pistol/Pistol_sound.play()
 	if weapon == $Machinegun:
 		var bullet_instance = Machinegun_bullet.instantiate()
 		get_tree().current_scene.add_child(bullet_instance)
@@ -106,6 +107,7 @@ func shoot():
 		Globals.machinegun_ammo_mag -= 1
 		print(Globals.machinegun_ammo_mag)
 		fire_speed.start()
+		$Machinegun/Machingun_sound.play()
 	if weapon == $Shotgun:
 		var bullet_instance = Shotgun_bullet.instantiate()
 		get_tree().current_scene.add_child(bullet_instance)
@@ -125,6 +127,7 @@ func shoot():
 		Globals.shotgun_ammo_mag -= 3
 		print(Globals.shotgun_ammo_mag)
 		fire_speed.start()
+		$Shotgun/Shotgun_sound.play()
 	if weapon == $Railgun:
 		var bullet_instance = Railgun_bullet.instantiate()
 		get_tree().current_scene.add_child(bullet_instance)
@@ -134,6 +137,7 @@ func shoot():
 		Globals.railgun_ammo_mag -= 1
 		print(Globals.railgun_ammo_mag)
 		fire_speed.start()
+		$Railgun/Railgun_sound.play()
 
 func handle_camera():
 	var new_camera_position = global_position + (get_global_mouse_position() - global_position) * SMOOTH
@@ -145,7 +149,9 @@ func player_take_damage(damage: int):
 
 		self.hp -= 30
 		animated_sprite.play("hit")
+		$Take_damage_sound.play()
 		blood.set_deferred("emitting", true) 
+		
 		if self.hp <= 0:
 			hp = 0
 

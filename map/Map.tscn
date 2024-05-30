@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=32 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -14,8 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dyot1bhutshr3" path="res://torch/torch.tscn" id="9_wjj4n"]
 [ext_resource type="PackedScene" uid="uid://dny0n80v6eq6n" path="res://pickups/AidKit.tscn" id="10_6hwa6"]
 [ext_resource type="PackedScene" uid="uid://cunffhudhib7r" path="res://spaceship/spaceship.tscn" id="13_olb0b"]
-[ext_resource type="PackedScene" uid="uid://d1mhnd510d1jh" path="res://enemy/enemyAlienShooter.tscn" id="15_yjvhv"]
+[ext_resource type="PackedScene" path="res://enemy/enemyAlienShooter.tscn" id="15_yjvhv"]
 [ext_resource type="PackedScene" uid="uid://bimpo780qylan" path="res://enemy/boss/boss.tscn" id="16_xelt5"]
+[ext_resource type="AudioStream" uid="uid://cfptto4nk28m2" path="res://Assets/desert-ambience.ogg" id="17_1de7s"]
+[ext_resource type="AudioStream" uid="uid://c6skxcgserh4u" path="res://Assets/level-ix-short-211052.mp3" id="18_uiiyo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32of"]
 texture = ExtResource("2_kodua")
@@ -6753,3 +6755,12 @@ position = Vector2(1196, 567)
 
 [node name="Boss" parent="." instance=ExtResource("16_xelt5")]
 position = Vector2(571, 283)
+
+[node name="Bacground_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_1de7s")
+volume_db = 5.0
+max_polyphony = 10
+
+[node name="Bacground_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_uiiyo")
+volume_db = -15.0

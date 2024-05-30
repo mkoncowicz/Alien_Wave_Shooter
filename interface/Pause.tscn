@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://v006i7etheg6"]
+[gd_scene load_steps=9 format=3 uid="uid://v006i7etheg6"]
 
 [ext_resource type="Script" path="res://interface/Pause.gd" id="1_l5sar"]
 [ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="2_cfgo3"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://c5h6p487fheoc" path="res://Assets/BebasNeue-Regular.ttf" id="4_3bnw3"]
 [ext_resource type="Texture2D" uid="uid://cs0k0spkui6ql" path="res://Assets/hover.png" id="4_3g2xi"]
 [ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="5_ahatb"]
+[ext_resource type="AudioStream" uid="uid://0do36cwep2ha" path="res://Assets/Menu Selection Click.mp3" id="7_3806t"]
+[ext_resource type="AudioStream" uid="uid://d2og2gg8k8qtb" path="res://Assets/selection.mp3" id="7_bfx2j"]
 
 [node name="Pause" type="Control"]
 process_mode = 3
@@ -137,5 +139,13 @@ grow_vertical = 2
 texture = ExtResource("5_ahatb")
 expand_mode = 1
 
+[node name="Click_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3806t")
+
+[node name="Hover_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bfx2j")
+
+[connection signal="mouse_entered" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/TextureButton2" to="." method="_on_texture_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/TextureButton2" to="." method="_on_texture_button_2_pressed"]

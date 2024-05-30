@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch6j8e2humtxq"]
+[gd_scene load_steps=9 format=3 uid="uid://ch6j8e2humtxq"]
 
 [ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="1_0lsvu"]
 [ext_resource type="Script" path="res://interface/Credits.gd" id="1_2gm68"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="3_b3oj8"]
 [ext_resource type="FontFile" uid="uid://c5h6p487fheoc" path="res://Assets/BebasNeue-Regular.ttf" id="4_8ktqq"]
 [ext_resource type="Texture2D" uid="uid://cs0k0spkui6ql" path="res://Assets/hover.png" id="4_weasq"]
+[ext_resource type="AudioStream" uid="uid://0do36cwep2ha" path="res://Assets/Menu Selection Click.mp3" id="7_aliju"]
+[ext_resource type="AudioStream" uid="uid://d2og2gg8k8qtb" path="res://Assets/selection.mp3" id="8_k8d1f"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -97,5 +99,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_b3oj8")
 expand_mode = 1
+
+[node name="Click_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aliju")
+
+[node name="Hover_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_k8d1f")
 
 [connection signal="pressed" from="TextureRect2/TextureButton" to="." method="_on_texture_button_pressed"]

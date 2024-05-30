@@ -9,9 +9,11 @@ func _process(delta):
 	pass
 
 func _on_texture_button_pressed():
+	$Click_sound.play()
 	unpause()
 
 func _on_texture_button_2_pressed():
+	$Click_sound.play()
 	get_tree().quit()
 
 func unpause():
@@ -22,3 +24,12 @@ func unpause():
 func pause():
 	get_tree().paused = true
 	$CanvasLayer.show()
+	$Click_sound.play()
+
+
+func _on_texture_button_mouse_entered():
+	$Hover_sound.play()
+
+
+func _on_texture_button_2_mouse_entered():
+	$Hover_sound.play()
