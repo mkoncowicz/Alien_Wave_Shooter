@@ -6,6 +6,8 @@ var is_alive : bool = true
 @export var Machinegun_bullet: PackedScene = preload("res://bullets/Machinegun_bullet.tscn")
 @export var Shotgun_bullet: PackedScene = preload("res://bullets/Shotgun_bullet.tscn")
 @export var Railgun_bullet: PackedScene = preload("res://bullets/Railgun_bullet.tscn")
+@onready var foot_step = $Foot_step
+@onready var blood = $Blood
 @onready var weapon = $Pistol
 @onready var muzzle = $Pistol/Pistol_muzzle
 @onready var Shotgun_muzzle2 = $Shotgun/Shotgun_muzzle2
@@ -31,9 +33,12 @@ func _process(delta: float):
 			if move_direction != Vector2.ZERO:
 				if immortal_frame.is_stopped():
 					animated_sprite.play("run")
+					if animated_sprite.frame == 2 or animated_sprite.frame == 4:
+						foot_step.set_deferred("emitting", true) 
 			else:
 				if immortal_frame.is_stopped():
 					animated_sprite.play("idle") 
+					foot_step.set_deferred("emitting", false) 
 			$Pistol.look_at(get_global_mouse_position())
 			$Machinegun.look_at(get_global_mouse_position())
 			$Shotgun.look_at(get_global_mouse_position())
@@ -140,12 +145,14 @@ func player_take_damage(damage: int):
 
 		self.hp -= 30
 		animated_sprite.play("hit")
+		blood.set_deferred("emitting", true) 
 		if self.hp <= 0:
 			hp = 0
 
 			Globals.player_health = hp
 			Globals.player_is_dead = true
 			animated_sprite.play("die")
+			foot_step.set_deferred("emitting", false)
 			move_direction = Vector2.ZERO
 
 func heal(value):
