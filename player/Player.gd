@@ -180,6 +180,7 @@ func player_take_damage(damage: int):
 			foot_step.set_deferred("emitting", false)
 			move_direction = Vector2.ZERO
 			
+			await get_tree().create_timer(1.0).timeout 
 			get_tree().change_scene_to_file("res://interface/Game_over_screen.tscn")
 
 func heal(value):

@@ -13,14 +13,5 @@ func _on_exit_button_pressed():
 	$Click_sound.play()
 	get_tree().quit()
 
-func _on_again_button_pressed():
-	$Click_sound.play()
-	get_tree().change_scene_to_file("res://interface/Main_interface.tscn")
-
-
-func _on_again_button_mouse_entered():
-	$Hover_sound.play()
-
-
 func _on_exit_button_mouse_entered():
 	$Hover_sound.play()
