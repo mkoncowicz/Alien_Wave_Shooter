@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=35 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://bimpo780qylan" path="res://enemy/boss/boss.tscn" id="16_xelt5"]
 [ext_resource type="AudioStream" uid="uid://cfptto4nk28m2" path="res://Assets/desert-ambience.ogg" id="17_1de7s"]
 [ext_resource type="AudioStream" uid="uid://c6skxcgserh4u" path="res://Assets/level-ix-short-211052.mp3" id="18_uiiyo"]
+[ext_resource type="PackedScene" uid="uid://bgbaycxs534nm" path="res://pickups/Machinegun.tscn" id="19_xu5ek"]
+[ext_resource type="PackedScene" uid="uid://badxgctb7caav" path="res://pickups/Railgun.tscn" id="20_nr0l0"]
+[ext_resource type="PackedScene" uid="uid://dtqjn2fkylqiv" path="res://pickups/Shotgun.tscn" id="21_2y1l4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32of"]
 texture = ExtResource("2_kodua")
@@ -6764,3 +6767,12 @@ max_polyphony = 10
 [node name="Bacground_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_uiiyo")
 volume_db = -15.0
+
+[node name="Machinegun" parent="." instance=ExtResource("19_xu5ek")]
+position = Vector2(140, 128)
+
+[node name="Railgun" parent="." instance=ExtResource("20_nr0l0")]
+position = Vector2(129, 177)
+
+[node name="Shotgun" parent="." instance=ExtResource("21_2y1l4")]
+position = Vector2(396, 201)

@@ -2,6 +2,9 @@ extends Entity
 
 const SMOOTH := 0.09
 var is_alive : bool = true
+var have_machinegun : bool = false
+var have_shotgun : bool = false
+var have_railgun : bool = false
 @export var bullet: PackedScene = preload("res://bullets/Pistol_bullet.tscn")
 @export var Machinegun_bullet: PackedScene = preload("res://bullets/Machinegun_bullet.tscn")
 @export var Shotgun_bullet: PackedScene = preload("res://bullets/Shotgun_bullet.tscn")
@@ -22,6 +25,7 @@ var is_alive : bool = true
 
 func _process(delta: float):
 	$Camera2D/GUI/GUI/TextureRect/ProgressBar.update()
+	print(have_railgun)
 	if !Globals.player_is_dead == true:
 		Globals.player_health = hp
 		var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
@@ -75,17 +79,17 @@ func get_input():
 			weapon = $Pistol
 			muzzle = $Pistol/Pistol_muzzle
 			flash_position = $Pistol/Pistol_flash
-		if Input.is_action_pressed("weapon_machinegun") and reload_timer.is_stopped():
+		if Input.is_action_pressed("weapon_machinegun") and reload_timer.is_stopped() and have_machinegun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Machinegun
 			muzzle = $Machinegun/Machinegun_muzzle
 			flash_position = $Machinegun/Machinegun_flash
-		if Input.is_action_pressed("weapon_shotgun") and reload_timer.is_stopped():
+		if Input.is_action_pressed("weapon_shotgun") and reload_timer.is_stopped() and have_shotgun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Shotgun
 			muzzle = $Shotgun/Shotgun_muzzle
 			flash_position = $Shotgun/Shotgun_flash
-		if Input.is_action_pressed("weapon_railgun") and reload_timer.is_stopped():
+		if Input.is_action_pressed("weapon_railgun") and reload_timer.is_stopped() and have_railgun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
 			weapon = $Railgun
 			muzzle = $Railgun/Railgun_muzzle
