@@ -15,6 +15,8 @@ var is_shooting = false
 var target_location = Vector2.ZERO
 
 func _physics_process(delta):
+	$Boss_progres_bar.update()
+	Globals.boss_health = self.hp
 	if is_dead:
 		return
 	muzzle1.look_at(nav_agent.target_position)

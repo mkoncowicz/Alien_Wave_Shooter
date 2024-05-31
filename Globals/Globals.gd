@@ -4,6 +4,8 @@ var wave: int = 0
 var score: int = 0
 var player_is_dead : bool
 var player_health : int
+var boss_health : int
+
 
 const machinegun_ammo_max : int = 24
 const shotgun_ammo_max : int = 12

@@ -1,10 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://bimpo780qylan"]
+[gd_scene load_steps=31 format=3 uid="uid://bimpo780qylan"]
 
 [ext_resource type="Script" path="res://enemy/boss/boss.gd" id="1_jubec"]
 [ext_resource type="Texture2D" uid="uid://bh5f21ctgjn5t" path="res://Assets/boss.png" id="2_1fp8m"]
 [ext_resource type="Script" path="res://enemy/boss/Fire_animation_boss.gd" id="2_7rdfv"]
 [ext_resource type="Texture2D" uid="uid://bpmwwnpsv3ayt" path="res://Assets/boss_bullet_fire.png" id="3_4ucjk"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="5_nkywr"]
+[ext_resource type="Texture2D" uid="uid://ysotur31yyv2" path="res://Assets/health_bar.png" id="6_favf7"]
+[ext_resource type="Texture2D" uid="uid://bax888yrdyo5d" path="res://Assets/health_bar_boss_progress.png" id="7_eedy6"]
+[ext_resource type="Script" path="res://enemy/boss/Boss_progres_bar.gd" id="8_64hx6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6vq7y"]
 atlas = ExtResource("2_1fp8m")
@@ -140,6 +143,15 @@ height = 46.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_w2a2k"]
 radius = 250.0
 
+[sub_resource type="Gradient" id="Gradient_l3ic3"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2saux"]
+gradient = SubResource("Gradient_l3ic3")
+width = 550
+height = 29
+
 [node name="Boss" type="CharacterBody2D" groups=["enemies"]]
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -148,11 +160,13 @@ script = ExtResource("1_jubec")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lvwow")
 animation = &"move"
+frame_progress = 0.588888
 
 [node name="Flash" type="Node2D" parent="AnimatedSprite2D"]
 position = Vector2(8, -14)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_st611")
 
@@ -176,18 +190,21 @@ texture_scale = 0.2
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 position = Vector2(2, 3)
 shape = SubResource("CapsuleShape2D_sheyr")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_ywjqk")
 
 [node name="Detection_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection_area"]
+visible = false
 shape = SubResource("CircleShape2D_w2a2k")
 
 [node name="Muzzle1" type="Node2D" parent="."]
@@ -198,6 +215,23 @@ position = Vector2(8, -14)
 
 [node name="Muzzle3" type="Node2D" parent="."]
 position = Vector2(8, -14)
+
+[node name="Boss_progres_bar" type="TextureProgressBar" parent="."]
+z_index = 1
+offset_left = -26.0
+offset_top = -28.0
+offset_right = 498.0
+offset_bottom = 6.0
+scale = Vector2(0.1, 0.1)
+value = 100.0
+texture_under = ExtResource("6_favf7")
+texture_progress = ExtResource("7_eedy6")
+script = ExtResource("8_64hx6")
+
+[node name="PointLight2D" type="PointLight2D" parent="Boss_progres_bar"]
+position = Vector2(261.919, 17.1397)
+scale = Vector2(0.952432, 1.18205)
+texture = SubResource("GradientTexture2D_2saux")
 
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
