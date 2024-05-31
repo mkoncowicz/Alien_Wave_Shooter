@@ -1,8 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://y5ugc12axm7s"]
+[gd_scene load_steps=13 format=3 uid="uid://cukantmd3sv5p"]
 
 [ext_resource type="Texture2D" uid="uid://cdddixlsy0c83" path="res://Assets/pickup_pistol_bullet.png" id="1_ewh0u"]
-[ext_resource type="Script" path="res://pickups/Pistol_bullet.gd" id="1_ga04h"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="2_q0aqa"]
+
+[sub_resource type="GDScript" id="GDScript_vqv37"]
+script/source = "extends Area2D
+
+func _ready(): 
+	$AnimatedSprite2D.play(\"default\")
+
+func _on_Pistol_bullet_body_entered(body):
+	
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vip8i"]
 atlas = ExtResource("1_ewh0u")
@@ -86,7 +95,7 @@ animations = [{
 size = Vector2(12, 10)
 
 [node name="PistolBullet" type="Area2D"]
-script = ExtResource("1_ga04h")
+script = SubResource("GDScript_vqv37")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hyjpe")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=38 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://bgbaycxs534nm" path="res://pickups/Machinegun.tscn" id="19_xu5ek"]
 [ext_resource type="PackedScene" uid="uid://badxgctb7caav" path="res://pickups/Railgun.tscn" id="20_nr0l0"]
 [ext_resource type="PackedScene" uid="uid://dtqjn2fkylqiv" path="res://pickups/Shotgun.tscn" id="21_2y1l4"]
+[ext_resource type="PackedScene" uid="uid://ck7urmwwv06im" path="res://pickups/Machinegun_bullet.tscn" id="22_yec0d"]
+[ext_resource type="PackedScene" uid="uid://b2obsta5ppnyr" path="res://pickups/Railgun_bullet.tscn" id="23_5lv3i"]
+[ext_resource type="PackedScene" uid="uid://bvurrph2envdv" path="res://pickups/Shotgun_bullet.tscn" id="24_4xtqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t32of"]
 texture = ExtResource("2_kodua")
@@ -6776,3 +6779,12 @@ position = Vector2(129, 177)
 
 [node name="Shotgun" parent="." instance=ExtResource("21_2y1l4")]
 position = Vector2(396, 201)
+
+[node name="MachinegunBullet" parent="." instance=ExtResource("22_yec0d")]
+position = Vector2(297, 91)
+
+[node name="RailgunBullet" parent="." instance=ExtResource("23_5lv3i")]
+position = Vector2(296, 147)
+
+[node name="ShotgunBullet" parent="." instance=ExtResource("24_4xtqs")]
+position = Vector2(238, 206)
