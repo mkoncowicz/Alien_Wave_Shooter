@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cukantmd3sv5p"]
+[gd_scene load_steps=13 format=3 uid="uid://ei11t6mvcpy3"]
 
 [ext_resource type="Texture2D" uid="uid://cdddixlsy0c83" path="res://Assets/pickup_pistol_bullet.png" id="1_ewh0u"]
 [ext_resource type="Texture2D" uid="uid://b6v123xpm4ue3" path="res://Assets/light.png" id="2_q0aqa"]

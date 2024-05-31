@@ -1,6 +1,7 @@
 extends Entity
 @onready var map = find_parent("Map")
 @onready var gui = map.find_child("Player").find_child("GUI")
+@onready var loot_system = map.find_child("Drop_system")
 @export var bullet: PackedScene = preload("res://bullets/Alien_gun_bullet.tscn")
 @onready var nav_agent = $NavigationAgent2D
 @onready var detection_area = $DetectionArea2D
@@ -52,6 +53,7 @@ func update_target_location(target_location):
 func take_damage(damage: int):
 	self.hp -= damage
 	if self.hp <= 0:
+		loot_system.generate_drop(global_position)
 		die()
 	else:
 		play_hit_animation()
@@ -60,6 +62,7 @@ func die():
 	if is_dead:
 		return
 	update_score()
+	get_tree().call_group("level", "enemy_death")
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 
@@ -75,7 +78,7 @@ func play_hit_animation():
 	$CollisionShape2D.set_deferred("disabled", true) 
 	$Hurtbox/CollisionShape2D.set_deferred("disabled", true) 
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true) 
-	await get_tree().create_timer(0.5).timeout 
+	await get_tree().create_timer(0.2).timeout 
 	is_hit = false
 	$CollisionShape2D.set_deferred("disabled", false) 
 	$Hurtbox/CollisionShape2D.set_deferred("disabled", false) 

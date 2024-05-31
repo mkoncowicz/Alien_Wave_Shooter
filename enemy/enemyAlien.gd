@@ -1,6 +1,7 @@
 extends Entity
 @onready var map = find_parent("Map")
 @onready var gui = map.find_child("Player").find_child("GUI")
+@onready var loot_system = map.find_child("Drop_system")
 @onready var nav_agent = $NavigationAgent2D
 var is_dead = false
 var is_hit = false
@@ -35,6 +36,7 @@ func _on_hitbox_body_entered(body):
 func take_damage(damage: int):
 	self.hp -= damage
 	if self.hp <= 0:
+		loot_system.generate_drop(global_position)
 		die()
 	else:
 		play_hit_animation()
@@ -43,6 +45,7 @@ func die():
 	if is_dead:
 		return
 	update_score()
+	get_tree().call_group("level", "enemy_death")
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 

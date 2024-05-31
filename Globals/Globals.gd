@@ -5,6 +5,7 @@ var score: int = 0
 var player_is_dead : bool
 var player_health : int
 var boss_health : int
+var enemie_dead_count: int = 0
 
 
 const machinegun_ammo_max : int = 24

@@ -25,7 +25,6 @@ var have_railgun : bool = false
 
 func _process(delta: float):
 	$Camera2D/GUI/GUI/TextureRect/ProgressBar.update()
-	print(have_railgun)
 	if !Globals.player_is_dead == true:
 		Globals.player_health = hp
 		var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()

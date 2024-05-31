@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkwq2glypbr6r"]
+
+[ext_resource type="Texture2D" uid="uid://n8qnxyg6u4pv" path="res://Assets/sign.png" id="1_y2ejs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3pw2"]
+radius = 4.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ebsj3"]
+polygon = PackedVector2Array(-2, 14, -2, 7, -11, 7, -11, 6, -12, 6, -12, -6, -11, -6, -11, -7, -9, -7, -9, -8, -8, -8, -8, -10, -2, -10, -2, -14, -1, -14, -1, -15, 2, -15, 2, -14, 3, -14, 3, -10, 10, -10, 10, -9, 11, -9, 11, -8, 12, -8, 12, 7, 3, 7, 3, 14)
+
+[node name="Sign" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y2ejs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("CircleShape2D_b3pw2")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ebsj3")

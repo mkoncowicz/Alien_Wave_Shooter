@@ -9,5 +9,5 @@ func _on_Railgun_body_entered(body):
 		Globals.railgun_ammo_mag = Globals.railgun_ammo_max
 		self.hide()
 		$Sprite2D/AudioStreamPlayer.play()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		queue_free()

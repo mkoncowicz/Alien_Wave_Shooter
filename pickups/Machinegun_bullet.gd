@@ -9,5 +9,5 @@ func _on_Machinegun_bullet_body_entered(body):
 		Globals.machinegun_ammo_stash = Globals.machinegun_ammo_max
 		self.hide()
 		$AnimatedSprite2D/AudioStreamPlayer.play()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
