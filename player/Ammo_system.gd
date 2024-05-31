@@ -1,5 +1,9 @@
 extends Node
 @onready var reload_timer = $Reload_timer
+@onready var reload_sound = $Reload_sound
+
+@onready var map = find_parent("Map")
+@onready var gui = map.find_child("Player").find_child("GUI")
 
 func update(weapon: String):
 		
@@ -26,6 +30,8 @@ func reload(weapon: String):
 				else:
 					Globals.machinegun_ammo_mag += Globals.machinegun_ammo_stash
 					Globals.machinegun_ammo_stash = 0
+				gui.reloading()
+				reload_sound.play()
 				reload_timer.start()
 				await get_tree().create_timer(1).timeout
 			else:
@@ -42,6 +48,8 @@ func reload(weapon: String):
 				else:
 					Globals.shotgun_ammo_mag += Globals.shotgun_ammo_stash
 					Globals.shotgun_ammo_stash = 0
+				gui.reloading()
+				reload_sound.play()
 				reload_timer.start()
 				await get_tree().create_timer(1).timeout
 			else:
@@ -58,6 +66,8 @@ func reload(weapon: String):
 				else:
 					Globals.railgun_ammo_mag += Globals.railgun_ammo_stash
 					Globals.railgun_ammo_stash = 0
+				gui.reloading()
+				reload_sound.play()
 				reload_timer.start()
 				await get_tree().create_timer(1).timeout
 			else:

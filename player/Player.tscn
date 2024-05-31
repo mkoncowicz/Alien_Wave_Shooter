@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bibw8h6hfvg0t"]
+[gd_scene load_steps=54 format=3 uid="uid://bibw8h6hfvg0t"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_0juml"]
 [ext_resource type="Texture2D" uid="uid://mhofwy7wx3y6" path="res://Assets/player.png" id="2_vgfvy"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dwkuisse2o7pr" path="res://Assets/scream-4.ogg" id="19_6bdqf"]
 [ext_resource type="AudioStream" uid="uid://cy7qrgyvg5yft" path="res://Assets/gruntsound.wav" id="19_fduwo"]
 [ext_resource type="Script" path="res://player/Ammo_system.gd" id="21_xvma7"]
+[ext_resource type="AudioStream" uid="uid://cem8lmm8l5aw0" path="res://Assets/reload.mp3" id="22_nst3t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7sial"]
 atlas = ExtResource("2_vgfvy")
@@ -416,3 +417,7 @@ script = ExtResource("21_xvma7")
 [node name="Reload_timer" type="Timer" parent="Ammo_system"]
 wait_time = 2.0
 one_shot = true
+
+[node name="Reload_sound" type="AudioStreamPlayer" parent="Ammo_system"]
+stream = ExtResource("22_nst3t")
+volume_db = 2.0
