@@ -179,6 +179,8 @@ func player_take_damage(damage: int):
 			animated_sprite.play("die")
 			foot_step.set_deferred("emitting", false)
 			move_direction = Vector2.ZERO
+			
+			get_tree().change_scene_to_file("res://interface/Game_over_screen.tscn")
 
 func heal(value):
 	hp += value

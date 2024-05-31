@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkvml30ymxvfo"]
+
+[ext_resource type="Script" path="res://interface/Game_over_screen.gd" id="1_4t3gp"]
+[ext_resource type="Texture2D" uid="uid://dxofona00upbb" path="res://Assets/background.png" id="1_oyb6c"]
+[ext_resource type="Texture2D" uid="uid://c0xv5nneyf4ys" path="res://Assets/Shade2.png" id="3_0ibmy"]
+[ext_resource type="Texture2D" uid="uid://cs0k0spkui6ql" path="res://Assets/hover.png" id="4_hhjp2"]
+[ext_resource type="Texture2D" uid="uid://rk08xlap1sr8" path="res://Assets/button.png" id="5_065yb"]
+[ext_resource type="AudioStream" uid="uid://cfptto4nk28m2" path="res://Assets/desert-ambience.ogg" id="6_jh05j"]
+[ext_resource type="AudioStream" uid="uid://d2og2gg8k8qtb" path="res://Assets/selection.mp3" id="7_jn2fx"]
+[ext_resource type="AudioStream" uid="uid://0do36cwep2ha" path="res://Assets/Menu Selection Click.mp3" id="8_e228x"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4t3gp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_oyb6c")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visibility_layer = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.5
+offset_top = -50.0
+offset_right = 47.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_0ibmy")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect2"]
+layout_mode = 1
+offset_left = 7.5
+offset_top = 7.5
+offset_right = 87.5
+offset_bottom = 32.5
+
+[node name="ExitButton" type="TextureButton" parent="TextureRect2/VBoxContainer"]
+layout_mode = 2
+texture_hover = ExtResource("4_hhjp2")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2/VBoxContainer/ExitButton"]
+layout_mode = 0
+offset_right = 304.0
+offset_bottom = 82.0
+scale = Vector2(0.26, 0.22)
+texture = ExtResource("5_065yb")
+
+[node name="Label" type="Label" parent="TextureRect2/VBoxContainer/ExitButton"]
+layout_mode = 0
+offset_right = 81.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 13
+text = "EXIT"
+horizontal_alignment = 1
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 10.0
+offset_right = 125.0
+offset_bottom = 110.0
+grow_horizontal = 2
+texture = ExtResource("3_0ibmy")
+expand_mode = 1
+
+[node name="Row1" type="VBoxContainer" parent="TextureRect5"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 15.0
+offset_bottom = 41.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="TextureRect5/Row1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Row2" type="VBoxContainer" parent="TextureRect5"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -47.0
+offset_right = 118.0
+offset_bottom = -3.0
+grow_vertical = 0
+
+[node name="Score" type="Label" parent="TextureRect5/Row2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "YOUR SCORE:"
+
+[node name="Row3" type="VBoxContainer" parent="TextureRect5"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -47.0
+offset_right = -43.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Score_value" type="Label" parent="TextureRect5/Row3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="Background_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jh05j")
+volume_db = 2.04
+
+[node name="Hover_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jn2fx")
+
+[node name="Click_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_e228x")
+
+[connection signal="mouse_entered" from="TextureRect2/VBoxContainer/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="pressed" from="TextureRect2/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
