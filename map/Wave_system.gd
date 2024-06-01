@@ -123,7 +123,6 @@ func update_level(level):
 		1:
 				start_spawning(5)
 				gui.set_wave_counter(Globals.wave)
-				spawn_boss()
 		2:
 				start_spawning(6)
 				gui.set_wave_counter(Globals.wave)
