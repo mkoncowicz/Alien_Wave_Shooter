@@ -19,7 +19,7 @@ var randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
 	2:24,
 	3:28,
 	4:32,
-	5:28
+	5:29
 }
 func _process(delta):
 	print(Globals.wave)

@@ -72,6 +72,7 @@ func die():
 		return
 	update_score()
 	get_tree().call_group("level", "set_boss_is_dead")
+	get_tree().call_group("level", "enemy_death")
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 
