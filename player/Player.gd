@@ -190,7 +190,7 @@ func player_take_damage(damage: int):
 
 func heal(value):
 	hp += value
-	hp = clamp(hp, 0, hp_max)
+	hp = clamp(hp, 0, 250)
 
 
 func weaponManager():
