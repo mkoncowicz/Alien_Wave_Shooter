@@ -6,6 +6,8 @@ extends Entity
 var is_dead = false
 var is_hit = false
 
+func _ready():
+	hp = 65 + (Globals.wave * 15)
 func _physics_process(delta):
 	if is_dead or is_hit:
 		return

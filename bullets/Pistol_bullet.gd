@@ -21,5 +21,5 @@ func _on_PistolBullet_body_entered(body: Node):
 	hit_animation_instance.rotation_degrees = self.rotation_degrees
 	
 	if body.has_method("take_damage"):
-		body.take_damage(1000)
+		body.take_damage(50)
 	queue_free()

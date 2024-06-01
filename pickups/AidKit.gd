@@ -10,5 +10,5 @@ func _on_AidKit_body_entered(body):
 		body.heal(health_value)
 		self.hide()
 		$AnimatedSprite2D/Pickup_aid.play()
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.1).timeout
 		queue_free()

@@ -22,6 +22,8 @@ var have_railgun : bool = false
 @onready var fire_animation = $Fire_animation
 @onready var flash_position = $Pistol/Pistol_flash
 @onready var weapon_change_speed = 0.09
+func _ready():
+	hp=250
 
 func _process(delta: float):
 	$Camera2D/GUI/GUI/TextureRect/ProgressBar.update()
@@ -75,24 +77,28 @@ func get_input():
 		
 		if Input.is_action_pressed("weapon_pistol") and reload_timer.is_stopped():
 			await get_tree().create_timer(weapon_change_speed).timeout
+			$Fire_speed.set_wait_time(0.3)
 			$Camera2D/GUI.pistol_selected()
 			weapon = $Pistol
 			muzzle = $Pistol/Pistol_muzzle
 			flash_position = $Pistol/Pistol_flash
 		if Input.is_action_pressed("weapon_machinegun") and reload_timer.is_stopped() and have_machinegun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
+			$Fire_speed.set_wait_time(0.15)
 			$Camera2D/GUI.machinegun_selected()
 			weapon = $Machinegun
 			muzzle = $Machinegun/Machinegun_muzzle
 			flash_position = $Machinegun/Machinegun_flash
 		if Input.is_action_pressed("weapon_shotgun") and reload_timer.is_stopped() and have_shotgun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
+			$Fire_speed.set_wait_time(0.4)
 			$Camera2D/GUI.shotgun_selected()
 			weapon = $Shotgun
 			muzzle = $Shotgun/Shotgun_muzzle
 			flash_position = $Shotgun/Shotgun_flash
 		if Input.is_action_pressed("weapon_railgun") and reload_timer.is_stopped() and have_railgun == true:
 			await get_tree().create_timer(weapon_change_speed).timeout
+			$Fire_speed.set_wait_time(0.3)
 			$Camera2D/GUI.railgun_selected()
 			weapon = $Railgun
 			muzzle = $Railgun/Railgun_muzzle

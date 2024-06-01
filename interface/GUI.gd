@@ -74,6 +74,48 @@ func reloading():
 	await get_tree().create_timer(2).timeout
 	$GUI/Reloading.hide()
 
+func set_wave_counter(number: int):
+	$GUI/Wave_counter.set_text("Wave "+ str(number))
+
+func counting_to_next_wave():
+	$GUI/Notification.show()
+	$GUI/Notification.set_text("New weapon available by the ship")
+	await get_tree().create_timer(3).timeout
+	$GUI/Notification.set_text("Enemies attack in 5")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 4")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 3")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 2")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 1")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 0")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.hide()
+	
+func win_notification():
+	$GUI/Notification.show()
+	$GUI/Notification.set_text("YOU WIN!!!")
+	
+func counting_to_first_wave():
+	await get_tree().create_timer(3).timeout
+	$GUI/Notification.show()
+	$GUI/Notification.set_text("Enemies attack in 5")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 4")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 3")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 2")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 1")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.set_text("Enemies attack in 0")
+	await get_tree().create_timer(1).timeout
+	$GUI/Notification.hide()
+
 func _on_texture_button_pressed():
 	$GUI.hide()
 	$Pause.pause()

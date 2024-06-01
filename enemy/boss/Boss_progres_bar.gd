@@ -1,6 +1,8 @@
 extends TextureProgressBar
+func _start():
+	update()
 
-func _ready():
+func _process(delta):
 	update()
 
 func update():

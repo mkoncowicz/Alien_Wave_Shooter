@@ -14,9 +14,15 @@ var is_dead = false
 var is_shooting = false
 var target_location = Vector2.ZERO
 
+func _ready():
+	hp = 3000
+	Globals.boss_health = hp
+	$GPUParticles2D.set_deferred("emitting", true) 
+	await get_tree().create_timer(2).timeout
+
 func _physics_process(delta):
 	$Boss_progres_bar.update()
-	Globals.boss_health = self.hp
+	Globals.boss_health = hp
 	if is_dead:
 		return
 	muzzle1.look_at(nav_agent.target_position)
@@ -65,6 +71,7 @@ func die():
 	if is_dead:
 		return
 	update_score()
+	get_tree().call_group("level", "set_boss_is_dead")
 	is_dead = true
 	animated_sprite.play("death")
 	$CollisionShape2D.set_deferred("disabled", true) 

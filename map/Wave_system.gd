@@ -1,36 +1,57 @@
 extends Node
-
+@export var machinegun: PackedScene = preload("res://pickups/Machinegun.tscn")
+@export var shotgun: PackedScene = preload("res://pickups/Shotgun.tscn")
+@export var railgun: PackedScene = preload("res://pickups/Railgun.tscn")
 @export var slime: PackedScene = preload("res://enemy/enemySlime.tscn")
 @export var alien: PackedScene = preload("res://enemy/enemyAlien.tscn")
 @export var alien_shooter: PackedScene = preload("res://enemy/enemyAlienShooter.tscn")
 @export var boss: PackedScene = preload("res://enemy/boss/boss.tscn")
 @onready var map = find_parent("Map")
 @onready var enemies_node = map.find_child("enemies")
+@onready var obstackles_node = map.find_child("obstackles")
+@onready var gui = map.find_child("Player").find_child("GUI")
 var randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var dead_enemies=0
+@onready var final_level=false
+@onready var boss_is_dead=false
 @onready var enemie_number_waves = {
-	1:4,
-	2:8,
-	3:8,
-	4:12,
-	5:12
+	1:20,
+	2:24,
+	3:28,
+	4:32,
+	5:28
 }
 func _process(delta):
 	print(Globals.wave)
 	print(dead_enemies)
-
 func enemy_death():
 	print("enemy death")
 	dead_enemies+=1
 	if dead_enemies == enemie_number_waves[Globals.wave]:
-		$Beteween_waves.start()
-		dead_enemies=0
+		if !final_level:
+			spawn_gun(Globals.wave)
+			$Beteween_waves.start()
+			dead_enemies=0
+			if Globals.wave < 4:
+				gui.counting_to_next_wave()
+			else:
+				gui.counting_to_first_wave()
+		if final_level and boss_is_dead:
+			gui.win_notification()
+			await get_tree().create_timer(5).timeout
+			get_tree().change_scene_to_file("res://interface/Game_over_screen.tscn")
 
 
 func _ready():
 	add_to_group("level")
 	randomizer.randomize()
+	gui.counting_to_first_wave()
 
+func spawn_boss():
+	var boss_instance = boss.instantiate()
+	boss_instance.global_position = $Boss_spawn.global_position
+	enemies_node.add_child(boss_instance)
+	
 func start_spawning(number: int):
 	spawner1(number)
 	spawner2(number)
@@ -81,18 +102,42 @@ func spawner4(number: int):
 		
 		
 
+func spawn_gun(Gun: int):
+	match Gun:
+		1:
+			var gun_instance = machinegun.instantiate()
+			gun_instance.global_position = $machinegun_spawnpoint.global_position
+			obstackles_node.add_child(gun_instance)
+		2:
+			var gun_instance = shotgun.instantiate()
+			gun_instance.global_position = $shotgun_spawnpoint.global_position
+			obstackles_node.add_child(gun_instance)
+		3:
+			var gun_instance = railgun.instantiate()
+			gun_instance.global_position = $railgun_spawnpoint.global_position
+			obstackles_node.add_child(gun_instance)
+	
+
 func update_level(level):
 	match level:
 		1:
-				start_spawning(1)
+				start_spawning(5)
+				gui.set_wave_counter(Globals.wave)
+				spawn_boss()
 		2:
-				start_spawning(2)
+				start_spawning(6)
+				gui.set_wave_counter(Globals.wave)
 		3:
-				start_spawning(2)
+				start_spawning(7)
+				gui.set_wave_counter(Globals.wave)
 		4:
-				start_spawning(3)
+				start_spawning(8)
+				gui.set_wave_counter(Globals.wave)
 		5:
-				start_spawning(3)
+				start_spawning(7)
+				spawn_boss()
+				gui.set_wave_counter(Globals.wave)
+				final_level = true
 		6:
 				print("end")
 func _on_beteween_waves_timeout():
@@ -102,3 +147,6 @@ func _on_beteween_waves_timeout():
 		print("end")
 		return
 	update_level(Globals.wave)
+	
+func set_boss_is_dead():
+	boss_is_dead = true

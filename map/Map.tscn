@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bc1rq7jy0owsc"]
+[gd_scene load_steps=32 format=3 uid="uid://bc1rq7jy0owsc"]
 
 [ext_resource type="PackedScene" uid="uid://bibw8h6hfvg0t" path="res://player/Player.tscn" id="1_7jr7l"]
 [ext_resource type="Script" path="res://map/Map.gd" id="1_jb3se"]
@@ -15,12 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cunffhudhib7r" path="res://spaceship/spaceship.tscn" id="13_olb0b"]
 [ext_resource type="AudioStream" uid="uid://cfptto4nk28m2" path="res://Assets/desert-ambience.ogg" id="17_1de7s"]
 [ext_resource type="AudioStream" uid="uid://c6skxcgserh4u" path="res://Assets/level-ix-short-211052.mp3" id="18_uiiyo"]
-[ext_resource type="PackedScene" uid="uid://bgbaycxs534nm" path="res://pickups/Machinegun.tscn" id="19_xu5ek"]
-[ext_resource type="PackedScene" uid="uid://badxgctb7caav" path="res://pickups/Railgun.tscn" id="20_nr0l0"]
-[ext_resource type="PackedScene" uid="uid://dtqjn2fkylqiv" path="res://pickups/Shotgun.tscn" id="21_2y1l4"]
-[ext_resource type="PackedScene" uid="uid://ck7urmwwv06im" path="res://pickups/Machinegun_bullet.tscn" id="22_yec0d"]
-[ext_resource type="PackedScene" uid="uid://b2obsta5ppnyr" path="res://pickups/Railgun_bullet.tscn" id="23_5lv3i"]
-[ext_resource type="PackedScene" uid="uid://bvurrph2envdv" path="res://pickups/Shotgun_bullet.tscn" id="24_4xtqs"]
 [ext_resource type="Script" path="res://map/Drop_system.gd" id="25_nknfs"]
 [ext_resource type="Texture2D" uid="uid://h4taf8lbewow" path="res://Assets/hole.png" id="26_o7inr"]
 [ext_resource type="Script" path="res://map/Wave_system.gd" id="28_8bm5e"]
@@ -6755,6 +6749,12 @@ position = Vector2(147, 269)
 [node name="AidKit" parent="pickups" instance=ExtResource("10_6hwa6")]
 position = Vector2(418, 382)
 
+[node name="AidKit2" parent="pickups" instance=ExtResource("10_6hwa6")]
+position = Vector2(815, 620)
+
+[node name="AidKit3" parent="pickups" instance=ExtResource("10_6hwa6")]
+position = Vector2(1133, 53)
+
 [node name="Spaceship" parent="." instance=ExtResource("13_olb0b")]
 position = Vector2(53, 128)
 collision_layer = 3
@@ -6767,25 +6767,6 @@ max_polyphony = 10
 [node name="Bacground_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_uiiyo")
 volume_db = -15.0
-
-[node name="Machinegun" parent="." instance=ExtResource("19_xu5ek")]
-position = Vector2(140, 128)
-
-[node name="Railgun" parent="." instance=ExtResource("20_nr0l0")]
-position = Vector2(129, 177)
-
-[node name="Shotgun" parent="." instance=ExtResource("21_2y1l4")]
-position = Vector2(396, 201)
-
-[node name="MachinegunBullet" parent="." instance=ExtResource("22_yec0d")]
-position = Vector2(297, 91)
-
-[node name="RailgunBullet" parent="." instance=ExtResource("23_5lv3i")]
-position = Vector2(296, 147)
-
-[node name="ShotgunBullet" parent="." instance=ExtResource("24_4xtqs")]
-visible = false
-position = Vector2(238, 206)
 
 [node name="Drop_system" type="Node" parent="."]
 script = ExtResource("25_nknfs")
@@ -6809,8 +6790,17 @@ position = Vector2(249, 763)
 position = Vector2(782, 403)
 
 [node name="Beteween_waves" type="Timer" parent="Wave_system"]
-wait_time = 5.0
+wait_time = 8.0
 one_shot = true
 autostart = true
+
+[node name="machinegun_spawnpoint" type="Node2D" parent="Wave_system"]
+position = Vector2(134, 116)
+
+[node name="shotgun_spawnpoint" type="Node2D" parent="Wave_system"]
+position = Vector2(133, 160)
+
+[node name="railgun_spawnpoint" type="Node2D" parent="Wave_system"]
+position = Vector2(86, 191)
 
 [connection signal="timeout" from="Wave_system/Beteween_waves" to="Wave_system" method="_on_beteween_waves_timeout"]

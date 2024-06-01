@@ -68,7 +68,8 @@ offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-value = 100.0
+max_value = 250.0
+value = 250.0
 texture_under = ExtResource("1_lfcgf")
 texture_progress = ExtResource("3_68uqs")
 script = ExtResource("3_swkh0")
@@ -268,6 +269,25 @@ offset_bottom = 181.0
 scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 24
 text = "Reloading..."
+
+[node name="Notification" type="Label" parent="GUI"]
+visible = false
+offset_left = 69.0
+offset_top = -1.0
+offset_right = 255.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 15
+text = "Next wave will start in 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Wave_counter" type="Label" parent="GUI"]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 62.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
 
 [node name="Pause" parent="." instance=ExtResource("5_c54d5")]
 visible = false
