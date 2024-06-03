@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cpac8kq4ncxgi" path="res://Assets/walls.png" id="5_ksxiv"]
 [ext_resource type="PackedScene" uid="uid://dyot1bhutshr3" path="res://torch/torch.tscn" id="9_wjj4n"]
 [ext_resource type="PackedScene" uid="uid://dny0n80v6eq6n" path="res://pickups/AidKit.tscn" id="10_6hwa6"]
-[ext_resource type="PackedScene" uid="uid://bkwq2glypbr6r" path="res://obstackles/Sign.tscn" id="11_wg0fe"]
+[ext_resource type="PackedScene" path="res://obstackles/Sign.tscn" id="11_wg0fe"]
 [ext_resource type="PackedScene" uid="uid://cunffhudhib7r" path="res://spaceship/spaceship.tscn" id="13_olb0b"]
 [ext_resource type="AudioStream" uid="uid://cfptto4nk28m2" path="res://Assets/desert-ambience.ogg" id="17_1de7s"]
 [ext_resource type="AudioStream" uid="uid://c6skxcgserh4u" path="res://Assets/level-ix-short-211052.mp3" id="18_uiiyo"]
